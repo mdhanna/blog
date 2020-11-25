@@ -20,14 +20,9 @@ If we can look past his self-aggrandizing remarks, "The Book of Why" applies cau
 
 Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think_ about what this data actually represents.
 
-<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-[Bazinga GIF](https://tenor.com/view/bazinga-gif-6163998) from [Bazinga GIFs](https://tenor.com/search/bazinga-gifs)
-_
+<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="70%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div><script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
 
-Data scientists with a new dataset
-
-_
-
+<i><p style="color:black;font-size:12px;">Data scientists with a new dataset</p></i>
 
 By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.
 
@@ -54,7 +49,6 @@ This is the simplest DAG and is represented in the example above.  A generalized
 
 Now we have two causes for C.  **Both A and B affect the outcome C.**
 
-
 ![]({{site.baseurl}}/images/dags/Capture-3.png)
 
 Conditioning on C will reveal a non-causal, _negative_ correlation between A & B.  This correlation is called **collider bias**.  
@@ -72,7 +66,6 @@ An example of a collider relationship would be the age-old nature vs. nurture qu
 In the case of a fork, **A affects both B and C.**
 
 ![]({{site.baseurl}}/images/dags/Capture-4.png)
-
 
 Without conditioning on A, there exists a spurious (non-causal) correlation between B & C.  A classic example of a spurious correlation is the relationship between crime (B) and ice cream sales (C).  When you plot these two values over time, they appear to increase and decrease together, suggesting some kind of causality.  Does ice cream cause people to commit crime?
 
@@ -94,13 +87,13 @@ Harking back to the crime-and-ice-cream example, temperature is the confounder n
 
 ![]({{site.baseurl}}/images/dags/Capture-4.png)
 
-**If we control for the confounder (A), we can isolate the relationship between C and B, if one exists. ** This is a key concept for experimental design.
+**If we control for the confounder (A), we can isolate the relationship between C and B, if one exists.** This is a key concept for experimental design.
 
 ## Correcting for Confounding
 
 Let's spend some more time on this subject.  Pearl's assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.
 
-Pearl defines confounding more broadly as any relationship that leads to $P(Y|do(X)) \neq P(Y|X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
+Pearl defines confounding more broadly as any relationship that leads to $P(Y|do(X))\neqP(Y|X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
 
 ### Four Rules of Information Flow
 
@@ -128,7 +121,7 @@ In other words, we need to identify and block all back-door paths while ensuring
 
 Let's go through some examples, using the numbered games from the book.
 
-#### Game 2
+#### **Game 2**
 
 ![]({{site.baseurl}}/images/dags/Capture-8.png)
 
@@ -138,7 +131,7 @@ There is one back-door path: X ← A → B ← D → E → Y.  This path is bloc
 
 Therefore, there is no need to control any of these variables!
 
-#### Game 5
+#### **Game 5**
 
 ![]({{site.baseurl}}/images/dags/Capture-9.png)
 
