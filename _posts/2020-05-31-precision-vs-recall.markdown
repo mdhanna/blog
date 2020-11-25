@@ -47,7 +47,7 @@ Here is an example for a classifier that attempts to determine if shoplifting is
 
 The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.
 
-
+<img src="Images/precision_recall/download-5.png" alt="Italian Trulli">
 ![image](Images/precision_recall/download-5.png)
 
 
@@ -58,17 +58,15 @@ From the matrix above, we can see that our classifier is rather paranoid and oft
 
 
 Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
-<br>
 
+<br>
 <p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 
 <br>
 Unfortunately, this model is performing far worse than random.
 
 <br>
-**WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
-<br>
-In other words,  because we have so few true shoplifting incidences compared to cases of normal behavior, we can easily achieve an accuracy of 0.904 by returning a prediction of "normal" every time.  But no one would consider such a classifier to be truly "accurate".
+**WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.  In other words,  because we have so few true shoplifting incidences compared to cases of normal behavior, we can easily achieve an accuracy of 0.904 by returning a prediction of "normal" every time.  But no one would consider such a classifier to be truly "accurate".
 
 
 ## Precision and Recall
