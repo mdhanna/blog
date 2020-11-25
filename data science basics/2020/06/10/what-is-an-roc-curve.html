@@ -120,7 +120,7 @@ window.onload = wrap_img;
 
 <p>Let’s jump right in.  Here’s an ROC curve for a model that predicts credit card default (where a <em>positive</em> is considered to be a default).</p>
 
-<p><img src="/mels_blog/images/complete.png" alt="" /></p>
+<p><img src="/mels_blog/images/roc_curve/complete.png" alt="" /></p>
 
 <h3 id="axes">Axes</h3>
 
@@ -156,13 +156,13 @@ $recall = \frac{true\ positives}{true\ positives\ +\  false\ negatives} $
 
 <p>For example, our model could determine a credit default using a probability threshold of 0.25.  If the model’s probability of default is 0.32, we would return “default”.  If the probability is 0.19, we could return “no default”.</p>
 
-<p><img src="/mels_blog/images/threshold_025.png" alt="" /></p>
+<p><img src="/mels_blog/images/roc_curve/threshold_025.png" alt="" /></p>
 
 <p>This is illustrated in the ROC plot above.  The FPR and TPR for a threshold of 0.25 is represented by the black dot on the ROC curve.  Our TPR is roughly 0.7 and our FPR is around 0.45.</p>
 
 <p>Now, let’s lower the threshold to 0.15.</p>
 
-<p><img src="/mels_blog/images/threshold_015.png" alt="" /></p>
+<p><img src="/mels_blog/images/roc_curve/threshold_015.png" alt="" /></p>
 
 <p>We move further up the curve, increasing our TPR to nearly 0.9 but also increasing our FPR to about 0.75.</p>
 
@@ -176,7 +176,7 @@ $recall = \frac{true\ positives}{true\ positives\ +\  false\ negatives} $
 
 <p>However, if we’d like to try and balance these two competing metrics, we can choose the point along the curve that is closest to the top-left corner of the plot.  This could be considered the apex of the curve, as shown below.</p>
 
-<p><img src="/mels_blog/images/download-10.png" alt="" /></p>
+<p><img src="/mels_blog/images/roc_curve/download-10.png" alt="" /></p>
 
 <p>The apex can be found by determining where on the curve we find a maximum difference between TPR and FPR.  In our case, this occurs at a threshold of 0.29 to return a TPR of nearly 0.6 and a FPR of about 0.36.</p>
 
@@ -186,7 +186,7 @@ $recall = \frac{true\ positives}{true\ positives\ +\  false\ negatives} $
 
 <p>The area in gray below represents the AUC.</p>
 
-<p><img src="/mels_blog/images/download-12.png" alt="" /></p>
+<p><img src="/mels_blog/images/roc_curve/download-12.png" alt="" /></p>
 
 <p>Our AUC for this model is 0.65.  A random model would produce an AUC of 0.5 so we are doing better than guessing!</p>
 
