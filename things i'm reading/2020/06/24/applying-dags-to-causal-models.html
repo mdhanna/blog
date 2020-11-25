@@ -115,15 +115,10 @@ window.onload = wrap_img;
 
 <p>Perhaps the biggest takeaway for me from this book is the need to <strong>understand the data generation process when working with a dataset</strong>.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don’t stop to <em>think</em> about what this data actually represents.</p>
 
-<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div>
+<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="70%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div>
 <script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
 
-<p><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a>
-_</p>
-
-<p>Data scientists with a new dataset</p>
-
-<p>_</p>
+<p><i>&lt;p style="color:black;font-size:12px;"&gt;Data scientists with a new dataset&lt;/p&gt;</i></p>
 
 <p>By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.</p>
 
@@ -187,7 +182,7 @@ _</p>
 
 <p><img src="/mels_blog/images/dags/Capture-4.png" alt="" /></p>
 
-<p>**If we control for the confounder (A), we can isolate the relationship between C and B, if one exists. ** This is a key concept for experimental design.</p>
+<p><strong>If we control for the confounder (A), we can isolate the relationship between C and B, if one exists.</strong> This is a key concept for experimental design.</p>
 
 <h2 id="correcting-for-confounding">Correcting for Confounding</h2>
 
@@ -197,7 +192,7 @@ _</p>
   <tbody>
     <tr>
       <td>Pearl defines confounding more broadly as any relationship that leads to $P(Y</td>
-      <td>do(X)) \neq P(Y</td>
+      <td>do(X))\neqP(Y</td>
       <td>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</td>
     </tr>
   </tbody>
@@ -231,7 +226,7 @@ _</p>
 
 <p>Let’s go through some examples, using the numbered games from the book.</p>
 
-<h4 id="game-2">Game 2</h4>
+<h4 id="game-2"><strong>Game 2</strong></h4>
 
 <p><img src="/mels_blog/images/dags/Capture-8.png" alt="" /></p>
 
@@ -241,7 +236,7 @@ _</p>
 
 <p>Therefore, there is no need to control any of these variables!</p>
 
-<h4 id="game-5">Game 5</h4>
+<h4 id="game-5"><strong>Game 5</strong></h4>
 
 <p><img src="/mels_blog/images/dags/Capture-9.png" alt="" /></p>
 
