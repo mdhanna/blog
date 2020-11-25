@@ -128,7 +128,7 @@ window.onload = wrap_img;
 
 <p>The answer is the latter definition above.  The table below sums this up.</p>
 
-<p><img src="../images/Capture-5.png" alt="" /></p>
+<p><img src="images/precision_recall/Capture-5.png" alt="" /></p>
 
 <h2 id="confusion-matrix">Confusion matrix</h2>
 
@@ -138,7 +138,7 @@ window.onload = wrap_img;
 
 <p>The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.</p>
 
-<p><img src="../images/download-5.png" alt="" /></p>
+<p><img src="images/precision_recall/download-5.png" alt="" /></p>
 
 <p>From the matrix above, we can see that our classifier is rather paranoid and often mistakes normal behavior for shoplifting.</p>
 
@@ -164,13 +164,13 @@ window.onload = wrap_img;
 
 <p>Precision is the answer to the question: out of the <strong>total predictions</strong> for a certain class returned by the model, how many were actually correct?  For example, the precision for the shoplifting class is:</p>
 
-<p>$precision = \frac{TP}{TP\ +\ FP}$</p>
+<p style="text-align: center;">$precision = \frac{TP}{TP\ +\ FP}$</p>
 
-<p>$precision_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total predicted shoplifting}} = \frac{40}{40+345} = 0.104$</p>
+<p style="text-align: center;">$precision_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total predicted shoplifting}} = \frac{40}{40+345} = 0.104$</p>
 
 <p>Similarly, for the normal behavior:</p>
 
-<p>$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$</p>
+<p style="text-align: center;">$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$</p>
 
 <p>In other words, the model’s predictions for normal behavior were correct 93% of the time, while its predictions for shoplifting were correct only <em>10%</em> of the time.  Yikes.</p>
 
@@ -178,11 +178,11 @@ window.onload = wrap_img;
 
 <p>I like to think of recall as a <strong>class-specific accuracy</strong>.  How many of the model’s predictions for a certain class were actually correct?</p>
 
-<p>$recall = \frac{TP}{TP\ +\ FN}$</p>
+<p style="text-align: center;">$recall = \frac{TP}{TP\ +\ FN}$</p>
 
-<p>$recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shoplifting}} = \frac{40}{40+8} = 0.833$</p>
+<p style="text-align: center;">$recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shoplifting}} = \frac{40}{40+8} = 0.833$</p>
 
-<p>$recall_{normal} = \frac{\text{ true normal}}{\text{ total actual normal}} = \frac{107}{107+345} = 0.237$</p>
+<p style="text-align: center;">$recall_{normal} = \frac{\text{ true normal}}{\text{ total actual normal}} = \frac{107}{107+345} = 0.237$</p>
 
 <p>The model correctly identified 83% of the actual shoplifting incidents.</p>
 
@@ -200,13 +200,13 @@ window.onload = wrap_img;
 
 <p>This is simply the harmonic mean of the precision and recall for a given class, shown below.</p>
 
-<p>$F1 = 2 * \frac{precision\ *\ recall}{precision\ +\ recall}$</p>
+<p style="text-align: center;">$F1 = 2 * \frac{precision\ *\ recall}{precision\ +\ recall}$</p>
 
 <p>An F1-score of 1 indicates perfect precision and recall.</p>
 
 <p>If you’d like to place more importance on recall over precision, you can introduce a $\beta$ term (set $\beta$ to a value less than 1 to place more emphasis of precision instead of recall).</p>
 
-<p>$F_{\beta} = (1\ +\ \beta^2) * \frac{precision\ *\ recall}{(\beta^2\ *\ precision)\ +\ recall}$</p>
+<p style="text-align: center;">$F_{\beta} = (1\ +\ \beta^2) * \frac{precision\ *\ recall}{(\beta^2\ *\ precision)\ +\ recall}$</p>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
