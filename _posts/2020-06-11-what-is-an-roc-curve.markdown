@@ -105,7 +105,3 @@ Our AUC for this model is 0.65.  A random model would produce an AUC of 0.5 so w
 An ideal model would have an ROC curve that hugs the axes with an apex close to the upper-left corner, resulting in an AUC of nearly 1.0.  Therefore, AUC is a way to quantify the ability of the model to maximize TPR while minimizing FPR, no matter the threshold chosen.
 
 
-## 
-
-
-
