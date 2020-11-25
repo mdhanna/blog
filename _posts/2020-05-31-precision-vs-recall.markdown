@@ -79,7 +79,7 @@ The answer is the latter definition above.  The table below sums this up.
 
 
 
-![](../images/Capture-5.png)
+![](images/precision_recall/Capture-5.png)
 
 
 
@@ -118,7 +118,7 @@ The confusion matrix shows the number of observations for each class and the cor
 
 
 
-![](../images/download-5.png)
+![](images/precision_recall/download-5.png)
 
 
 
@@ -220,7 +220,7 @@ Precision is the answer to the question: out of the **total predictions** for a 
 
 
 
-$precision = \frac{TP}{TP\ +\ FP}$
+<p style="text-align: center;">$precision = \frac{TP}{TP\ +\ FP}$</p>
 
 
 
@@ -228,7 +228,7 @@ $precision = \frac{TP}{TP\ +\ FP}$
 
 
 
-$precision_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total predicted shoplifting}} = \frac{40}{40+345} = 0.104$
+<p style="text-align: center;">$precision_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total predicted shoplifting}} = \frac{40}{40+345} = 0.104$</p>
 
 
 
@@ -244,7 +244,7 @@ Similarly, for the normal behavior:
 
 
 
-$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$
+<p style="text-align: center;">$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$</p>
 
 
 
@@ -276,7 +276,7 @@ I like to think of recall as a **class-specific accuracy**.  How many of the mod
 
 
 
-$recall = \frac{TP}{TP\ +\ FN}$
+<p style="text-align: center;">$recall = \frac{TP}{TP\ +\ FN}$</p>
 
 
 
@@ -284,7 +284,7 @@ $recall = \frac{TP}{TP\ +\ FN}$
 
 
 
-$recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shoplifting}} = \frac{40}{40+8} = 0.833$
+<p style="text-align: center;">$recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shoplifting}} = \frac{40}{40+8} = 0.833$</p>
 
 
 
@@ -292,7 +292,7 @@ $recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shop
 
 
 
-$recall_{normal} = \frac{\text{ true normal}}{\text{ total actual normal}} = \frac{107}{107+345} = 0.237$
+<p style="text-align: center;">$recall_{normal} = \frac{\text{ true normal}}{\text{ total actual normal}} = \frac{107}{107+345} = 0.237$</p>
 
 
 
@@ -364,7 +364,7 @@ This is simply the harmonic mean of the precision and recall for a given class, 
 
 
 
-$F1 = 2 * \frac{precision\ *\ recall}{precision\ +\ recall}$
+<p style="text-align: center;">$F1 = 2 * \frac{precision\ *\ recall}{precision\ +\ recall}$</p>
 
 
 
@@ -388,7 +388,7 @@ If you'd like to place more importance on recall over precision, you can introdu
 
 
 
-$F_{\beta} = (1\ +\ \beta^2) * \frac{precision\ *\ recall}{(\beta^2\ *\ precision)\ +\ recall}$
+<p style="text-align: center;">$F_{\beta} = (1\ +\ \beta^2) * \frac{precision\ *\ recall}{(\beta^2\ *\ precision)\ +\ recall}$</p>
 
 
 
