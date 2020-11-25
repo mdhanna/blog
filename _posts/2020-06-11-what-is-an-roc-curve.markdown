@@ -34,7 +34,7 @@ Let's jump right in.  Here's an ROC curve for a model that predicts credit card 
 The x-axis represents the **False Positive Rate (FPR) or the probability of a false alarm**.  This can be calculated through:
 
 <br>
-$FPR = \frac{false\ positives}{false\ positives\ +\ true\ negatives}$
+<p style="text-align: center;">$FPR = \frac{false\ positives}{false\ positives\ +\ true\ negatives}$</p>
 <br>
 
 Put another way, FPR represents the fraction of incorrectly classified negatives (in this case, accounts that did not default but for which our model predicted would default) within the total population of negatives (all accounts that did not default).
@@ -44,7 +44,7 @@ The y-axis shows the **True Positive Rate (TPR), which is equivalent to the reca
 Recall is just class-specific accuracy or:
 
 <br>
-$recall = \frac{true\ positives}{true\ positives\ +\  false\ negatives} $
+<p style="text-align: center;">$recall = \frac{true\ positives}{true\ positives\ +\  false\ negatives} $</p>
 <br>
 
 Again, in the context of our example, this is the fraction of accounts that did default and for which our model predicted they would within the total population of accounts that did default.
