@@ -79,7 +79,7 @@ The answer is the latter definition above.  The table below sums this up.
 
 
 
-![](https://melhanna.com/wp-content/uploads/2020/06/Capture-5.png)
+![](images/Capture-5.png)
 
 
 
@@ -118,7 +118,7 @@ The confusion matrix shows the number of observations for each class and the cor
 
 
 
-![](https://melhanna.com/wp-content/uploads/2020/05/download-5.png)
+![](images/download-5.png)
 
 
 
@@ -140,7 +140,7 @@ From the matrix above, we can see that our classifier is rather paranoid and oft
 
 
 
-[latexpage]Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
+Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
 
 
 
@@ -220,7 +220,7 @@ Precision is the answer to the question: out of the **total predictions** for a 
 
 
 
-[latexpage]$precision = \frac{TP}{TP\ +\ FP}$
+$precision = \frac{TP}{TP\ +\ FP}$
 
 
 
@@ -244,7 +244,7 @@ Similarly, for the normal behavior:
 
 
 
-[latexpage]$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$
+$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$
 
 
 
