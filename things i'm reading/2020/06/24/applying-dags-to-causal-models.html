@@ -115,7 +115,7 @@ window.onload = wrap_img;
 
 <p>Perhaps the biggest takeaway for me from this book is the need to <strong>understand the data generation process when working with a dataset</strong>.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don’t stop to <em>think</em> about what this data actually represents.</p>
 
-<center><img src="/mels_blog/images/candor/tenor.gif" alt="BLAH" height="150" width="200" /></center>
+<center><img src="/mels_blog/images/candor/tenor.gif" alt="BLAH" height="350" width="200" /></center>
 
 <p>By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.</p>
 
@@ -185,7 +185,7 @@ window.onload = wrap_img;
 
 <p>Let’s spend some more time on this subject.  Pearl’s assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.</p>
 
-<p>Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>|</span>do(X)) \neq P(Y<span>|</span>X)$$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</p>
+<p>Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>|</span>do(X)) \neq P(Y<span>|</span>X)$ $, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</p>
 
 <h3 id="four-rules-of-information-flow">Four Rules of Information Flow</h3>
 
