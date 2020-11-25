@@ -204,7 +204,7 @@ This is where precision and recall come into play.  These metrics are **class-sp
 
 
 
-#### Precision
+#### **Precision**
 
 
 
@@ -260,7 +260,7 @@ In other words, the model's predictions for normal behavior were correct 93% of 
 
 
 
-#### Recall
+#### **Recall**
 
 
 
