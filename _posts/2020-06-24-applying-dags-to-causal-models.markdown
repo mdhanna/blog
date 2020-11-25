@@ -20,7 +20,7 @@ If we can look past his self-aggrandizing remarks, "The Book of Why" applies cau
 
 Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think_ about what this data actually represents.
 
-
+<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 [Bazinga GIF](https://tenor.com/view/bazinga-gif-6163998) from [Bazinga GIFs](https://tenor.com/search/bazinga-gifs)
 _
 
@@ -100,7 +100,6 @@ Harking back to the crime-and-ice-cream example, temperature is the confounder n
 
 Let's spend some more time on this subject.  Pearl's assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.
 
-
 Pearl defines confounding more broadly as any relationship that leads to $P(Y|do(X)) \neq P(Y|X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
 
 ### Four Rules of Information Flow
@@ -108,8 +107,11 @@ Pearl defines confounding more broadly as any relationship that leads to $P(Y|do
 Pearl has 4 rules for controlling the flow of information through a DAG.
 
 1. In a chain (A -> B -> C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+<br>
 2. In a fork (A <- B -> C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+<br>
 3. In a collider (A -> B <- C), controlling for B "opens up" the pipe between A and C due to the explain-away effect.
+<br>
 4. Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.
 
 ### Back-door criterion
