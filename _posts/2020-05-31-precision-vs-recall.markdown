@@ -37,7 +37,6 @@ The answer is the latter definition above.  The table below sums this up.
 ![Capture-5.png](images/precision_recall/Capture-5.png)
 
 
-
 ## Confusion matrix
 
 
@@ -69,50 +68,17 @@ Wowza, this is a terrible model.
 <b></b>
 **WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
 
-
-
-
-
-
-
 In other words,  because we have so few true shoplifting incidences compared to cases of normal behavior, we can easily achieve an accuracy of 0.904 by returning a prediction of "normal" every time.  But no one would consider such a classifier to be truly "accurate".
-
-
-
-
-
 
 
 ## Precision and Recall
 
-
-
-
-
-
-
 I mentioned earlier that our classifier tends to overpredict shoplifting--how can we incorporate this tendency into a performance metric?
-
-
-
-
-
-
 
 This is where precision and recall come into play.  These metrics are **class-specific**, which means that we must specify a value for both precision and recall for each class returned by the model.
 
 
-
-
-
-
-
 #### **Precision**
-
-
-
-
-
 
 
 Precision is the answer to the question: out of the **total predictions** for a certain class returned by the model, how many were actually correct?  For example, the precision for the shoplifting class is:
