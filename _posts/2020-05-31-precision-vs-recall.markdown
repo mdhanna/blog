@@ -51,6 +51,7 @@ From the matrix above, we can see that our classifier is rather paranoid and oft
 
 
 Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
+
 <br>
 <p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 <br>
