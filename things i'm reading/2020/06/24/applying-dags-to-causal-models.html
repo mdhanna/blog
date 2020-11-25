@@ -7,7 +7,6 @@
 <title>Applying DAG’s to Causal Models | Mel Hanna</title>
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Applying DAG’s to Causal Models" />
-<meta name="author" content="Mel" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation." />
 <meta property="og:description" content="I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation." />
@@ -17,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-24T06:35:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html","@type":"BlogPosting","headline":"Applying DAG’s to Causal Models","dateModified":"2020-06-24T06:35:00-05:00","datePublished":"2020-06-24T06:35:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html"},"author":{"@type":"Person","name":"Mel"},"description":"I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation.","@context":"https://schema.org"}</script>
+{"url":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html","@type":"BlogPosting","headline":"Applying DAG’s to Causal Models","dateModified":"2020-06-24T06:35:00-05:00","datePublished":"2020-06-24T06:35:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html"},"description":"I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/mels_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/mels_blog/feed.xml" title="Mel Hanna" /><link rel="shortcut icon" type="image/x-icon" href="/mels_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -90,9 +89,7 @@ window.onload = wrap_img;
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Applying DAG&#39;s to Causal Models</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-24T06:35:00-05:00" itemprop="datePublished">
         Jun 24, 2020
-      </time>• 
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">Mel</span></span>
+      </time>
        • <span class="read-time" title="Estimated read time">
     
     
@@ -131,7 +128,7 @@ _</p>
 
 <p><strong>Directly acyclic graphs</strong> (DAG’s) are a visual representation of a causal model.  Here’s a simple one:</p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture.png" alt="" /></p>
 
 <p>You were late for work because you had to change your car’s tire because it was flat.  Of course, we could add on much more than this (why was it flat?) but you get the idea.</p>
 
@@ -143,15 +140,15 @@ _</p>
 
 <p>This is the simplest DAG and is represented in the example above.  A generalized representation below shows that A is a cause of B, which is itself a cause of C.</p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-1.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-1.png" alt="" /></p>
 
 <h3 id="collider">Collider</h3>
 
 <p>Now we have two causes for C.  <strong>Both A and B affect the outcome C.</strong></p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-3.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-3.png" alt="" /></p>
 
-<p>Conditioning on C will reveal a non-causal, _negative _correlation between A &amp; B.  This correlation is called <strong>collider bias</strong>.</p>
+<p>Conditioning on C will reveal a non-causal, <em>negative</em> correlation between A &amp; B.  This correlation is called <strong>collider bias</strong>.</p>
 
 <p>We can understand this effect in crude mathematical terms.  If A + B = C and we hold C constant, then we must increase A by the same amount we decrease B.</p>
 
@@ -163,9 +160,9 @@ _</p>
 
 <h3 id="fork">Fork</h3>
 
-<p>In the case of a fork, **A affects both B and C. **</p>
+<p>In the case of a fork, <strong>A affects both B and C.</strong></p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-4.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-4.png" alt="" /></p>
 
 <p>Without conditioning on A, there exists a spurious (non-causal) correlation between B &amp; C.  A classic example of a spurious correlation is the relationship between crime (B) and ice cream sales (C).  When you plot these two values over time, they appear to increase and decrease together, suggesting some kind of causality.  Does ice cream cause people to commit crime?</p>
 
@@ -179,13 +176,13 @@ _</p>
 
 <p>Again using the example below, B mediates the causal effect of A onto C.</p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-1.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-1.png" alt="" /></p>
 
 <h3 id="confounders">Confounders</h3>
 
 <p>Harking back to the crime-and-ice-cream example, temperature is the confounder node as it “confounds” the relationship between ice cream sales and crime.</p>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-4.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-4.png" alt="" /></p>
 
 <p>**If we control for the confounder (A), we can isolate the relationship between C and B, if one exists. ** This is a key concept for experimental design.</p>
 
@@ -196,7 +193,7 @@ _</p>
 <table>
   <tbody>
     <tr>
-      <td>Pearl defines confounding more broadly as any relationship that leads to [latexpage]$P(Y</td>
+      <td>Pearl defines confounding more broadly as any relationship that leads to $P(Y</td>
       <td>do(X)) \neq P(Y</td>
       <td>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</td>
     </tr>
@@ -207,20 +204,12 @@ _</p>
 
 <p>Pearl has 4 rules for controlling the flow of information through a DAG.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. In a chain (A -&gt; B -&gt; C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
-  
- 
-
-2. In a fork (A &lt;- B -&gt; C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
-  
-
-
-3. In a collider (A -&gt; B &lt;- C), controlling for B "opens up" the pipe between A and C due to the explain-away effect.
-  
-
-
-4. Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.
-</code></pre></div></div>
+<ol>
+  <li>In a chain (A -&gt; B -&gt; C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.</li>
+  <li>In a fork (A &lt;- B -&gt; C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.</li>
+  <li>In a collider (A -&gt; B &lt;- C), controlling for B “opens up” the pipe between A and C due to the explain-away effect.</li>
+  <li>Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.</li>
+</ol>
 
 <h3 id="back-door-criterion">Back-door criterion</h3>
 
@@ -238,7 +227,7 @@ _</p>
 
 <h4 id="game-2">Game 2</h4>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-8.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-8.png" alt="" /></p>
 
 <p>We need to determine which variables (if any) of A, B, C, D, or E need to be controlled in order to deconfound the path from X to Y.</p>
 
@@ -248,16 +237,14 @@ _</p>
 
 <h4 id="game-5">Game 5</h4>
 
-<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-9.png" alt="" /></p>
+<p><img src="/mels_blog/images/dags/Capture-9.png" alt="" /></p>
 
 <p>This one’s a bit more interesting.  We have two back-door paths:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. X ← A → B ← C → Y
-  
- 
-
-2. X ← B ← C → Y
-</code></pre></div></div>
+<ol>
+  <li>X ← A → B ← C → Y</li>
+  <li>X ← B ← C → Y</li>
+</ol>
 
 <p>The first back-door path is blocked by a collider at B so there is no need to control any variables due to this relationship.</p>
 
