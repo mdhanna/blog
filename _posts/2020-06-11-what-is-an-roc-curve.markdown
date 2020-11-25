@@ -1,5 +1,4 @@
 ---
-author: Mel
 comments: true
 date: 2020-06-11 02:16:15+00:00
 layout: post
