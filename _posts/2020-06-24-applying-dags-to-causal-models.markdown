@@ -17,31 +17,13 @@ categories:
 I've been reading "The Book of Why" by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation.   However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation.
 
 
-
-
-
-
-
 If we can look past his self-aggrandizing remarks, "The Book of Why" applies causal models to examples from the surgeon general's committee on smoking in the 1960's to the Monty Hall paradox.  By reducing these multi-faceted problems down to a causal representation, we can finally put our finger on contributing factors or "causes" and control for them (if possible) to isolate the effect we are attempting to discover.
 
 
-
-
-
-
-
-Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think _about what this data actually represents.
-
-
-
-
-
+Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think_ about what this data actually represents.
 
 
 [Bazinga GIF](https://tenor.com/view/bazinga-gif-6163998) from [Bazinga GIFs](https://tenor.com/search/bazinga-gifs)
-
-
-
 _
 
 Data scientists with a new dataset
