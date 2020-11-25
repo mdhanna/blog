@@ -62,7 +62,7 @@ If you've built a binary classifier, perhaps the first step in determining your 
 
 
 
-Something I struggled with initially was what exactly did we mean by a "false negative"?  Was it a _true _negative that we classified incorrectly?  Or did the model return an incorrect (and therefore false) _prediction _of negative?  In other words, from whose perspective do we consider this classification false?
+Something I struggled with initially was what exactly did we mean by a "false negative"?  Was it a _true_ negative that we classified incorrectly?  Or did the model return an incorrect (and therefore false) _prediction_ of negative?  In other words, from whose perspective do we consider this classification false?
 
 
 
@@ -164,7 +164,7 @@ Wowza, this is a terrible model.
 
 
 
-**WARNING: **Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
+**WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
 
 
 
