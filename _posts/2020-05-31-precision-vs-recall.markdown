@@ -16,154 +16,57 @@ categories:
 
 Congrats!  You've built a binary classifier that you're convinced is totally awesome.
 
-
-
-
-
-
-
 But how do you quantify just how awesome this model is?  And more specifically, how do you communicate this model's level of awesomeness to your manager/product owner/stakeholder/random-person-on-the-street?
-
-
-
-
-
-
 
 This is where performance metrics such as precision and recall come into play, and we'll attempt to explain the intuition around these in addition to their definitions.
 
 
-
-
-
-
-
 ## What is the positive class?
-
-
-
-
-
-
 
 If you've built a binary classifier, perhaps the first step in determining your performance metric is to select a "positive" class.  This is easy in some instances (ex. coronavirus test result) and less so in others (ex. determining if your pet is either a cat or a chinchilla).  But establishing these definitions early (and stating them explicitly) will save a lot of confusion down the road.
 
-
-
-
-
-
-
 ## False negatives vs. true positives
-
-
-
-
-
 
 
 Something I struggled with initially was what exactly did we mean by a "false negative"?  Was it a _true_ negative that we classified incorrectly?  Or did the model return an incorrect (and therefore false) _prediction_ of negative?  In other words, from whose perspective do we consider this classification false?
 
 
-
-
-
-
-
 The answer is the latter definition above.  The table below sums this up.
 
 
-
-
-
-
-
-
-![](images/precision_recall/Capture-5.png)
-
-
-
-
-
+![Capture-5.png](images/precision_recall/Capture-5.png)
 
 
 
 ## Confusion matrix
 
 
-
-
-
-
-
 Once you've established your false positives and false negatives, you can display them in a confusion matrix that looks very similar to the table above.
-
-
-
-
-
 
 
 Here is an example for a classifier that attempts to determine if shoplifting is taking place (where we define a shoplifting incident as a _positive_).  Let's say for example, this model takes video footage from a store surveillance system and looks for certain features (ex. a customer picking up an item and hiding it under his/her shirt) that would indicate shoplifting.
 
-
-
-
-
-
-
 The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.
-
-
-
 
 
 ![](images/precision_recall/download-5.png)
 
 
-
-
-
 From the matrix above, we can see that our classifier is rather paranoid and often mistakes normal behavior for shoplifting.
-
-
-
-
-
 
 
 ## Accuracy
 
 
-
-
-
-
-
 Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
-
-
-
-
-
 
 
 <p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 
 
-
-
-
-
-
 Wowza, this is a terrible model.
 
-
-
-
-
-
-
+<b></b>
 **WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
 
 
