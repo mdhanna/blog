@@ -79,7 +79,7 @@ The answer is the latter definition above.  The table below sums this up.
 
 
 
-![](images/Capture-5.png)
+![](../images/Capture-5.png)
 
 
 
@@ -118,7 +118,7 @@ The confusion matrix shows the number of observations for each class and the cor
 
 
 
-![](images/download-5.png)
+![](../images/download-5.png)
 
 
 
@@ -148,7 +148,7 @@ Now we can start to sum up the classifier's performance using a single value, su
 
 
 
-$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$
+<p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 
 
 
