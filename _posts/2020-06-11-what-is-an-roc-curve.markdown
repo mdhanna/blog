@@ -25,7 +25,7 @@ Plotting a _Receiver Operating Characteristic (ROC)_ curve is another useful too
 
 Let's jump right in.  Here's an ROC curve for a model that predicts credit card default (where a _positive_ is considered to be a default).
 
-![]({{site.baseurl}}/images/complete.png)
+![]({{site.baseurl}}/images/roc_curve/complete.png)
 
 
 ### Axes
@@ -65,13 +65,13 @@ The ROC visualizes the trade-offs between the FPR and the TPR **when we adjust t
 
 For example, our model could determine a credit default using a probability threshold of 0.25.  If the model's probability of default is 0.32, we would return "default".  If the probability is 0.19, we could return "no default".
 
-![]({{site.baseurl}}/images/threshold_025.png)
+![]({{site.baseurl}}/images/roc_curve/threshold_025.png)
 
 This is illustrated in the ROC plot above.  The FPR and TPR for a threshold of 0.25 is represented by the black dot on the ROC curve.  Our TPR is roughly 0.7 and our FPR is around 0.45.
 
 Now, let's lower the threshold to 0.15.
 
-![]({{site.baseurl}}/images/threshold_015.png)
+![]({{site.baseurl}}/images/roc_curve/threshold_015.png)
 
 We move further up the curve, increasing our TPR to nearly 0.9 but also increasing our FPR to about 0.75.
 
@@ -86,7 +86,7 @@ Of course, this will likely depend on model-specific considerations.  For exampl
 
 However, if we'd like to try and balance these two competing metrics, we can choose the point along the curve that is closest to the top-left corner of the plot.  This could be considered the apex of the curve, as shown below.
 
-![]({{site.baseurl}}/images/download-10.png)
+![]({{site.baseurl}}/images/roc_curve/download-10.png)
 
 The apex can be found by determining where on the curve we find a maximum difference between TPR and FPR.  In our case, this occurs at a threshold of 0.29 to return a TPR of nearly 0.6 and a FPR of about 0.36.
 
@@ -98,7 +98,7 @@ Perhaps the most widely used application of an ROC curve is to calculate the are
 
 The area in gray below represents the AUC.
 
-![]({{site.baseurl}}/images/download-12.png)
+![]({{site.baseurl}}/images/roc_curve/download-12.png)
 
 Our AUC for this model is 0.65.  A random model would produce an AUC of 0.5 so we are doing better than guessing!
 
