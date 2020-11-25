@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Applying DAG’s to Causal Models | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Applying DAG’s to Causal Models" />
+<meta name="author" content="Mel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation." />
+<meta property="og:description" content="I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation." />
+<link rel="canonical" href="https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html" />
+<meta property="og:url" content="https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-24T06:35:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html"},"headline":"Applying DAG’s to Causal Models","dateModified":"2020-06-24T06:35:00-05:00","datePublished":"2020-06-24T06:35:00-05:00","author":{"@type":"Person","name":"Mel"},"description":"I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation. However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/mels_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/mels_blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/mels_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/mels_blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/mels_blog/about/">About Me</a><a class="page-link" href="/mels_blog/search/">Search</a><a class="page-link" href="/mels_blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Applying DAG&#39;s to Causal Models</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-24T06:35:00-05:00" itemprop="datePublished">
+        Jun 24, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Mel</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/mels_blog/categories/#Things I'm Reading">Things I'm Reading</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I’ve been reading “The Book of Why” by Judea Pearl over the past few weeks, which has really helped formalize my intuition of causation.   However, the book would be much better if Pearl left out any sentences written in the first-person as he has an annoying tendency to style himself as a messiah proclaiming the enlightened concepts of Causation to all the lowly statisticians still stuck on Correlation.</p>
+
+<p>If we can look past his self-aggrandizing remarks, “The Book of Why” applies causal models to examples from the surgeon general’s committee on smoking in the 1960’s to the Monty Hall paradox.  By reducing these multi-faceted problems down to a causal representation, we can finally put our finger on contributing factors or “causes” and control for them (if possible) to isolate the effect we are attempting to discover.</p>
+
+<p>Perhaps the biggest takeaway for me from this book is the need to <strong>understand the data generation process when working with a dataset</strong>.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don’t stop to _think _about what this data actually represents.</p>
+
+<p><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></p>
+
+<p>_</p>
+
+<p>Data scientists with a new dataset</p>
+
+<p>_</p>
+
+<p>By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.</p>
+
+<h2 id="so-whats-a-dag">So what’s a DAG?</h2>
+
+<p><strong>Directly acyclic graphs</strong> (DAG’s) are a visual representation of a causal model.  Here’s a simple one:</p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture.png" alt="" /></p>
+
+<p>You were late for work because you had to change your car’s tire because it was flat.  Of course, we could add on much more than this (why was it flat?) but you get the idea.</p>
+
+<h2 id="junction-types">Junction Types</h2>
+
+<p>Let’s explore what we can do with DAG’s through different junction types.</p>
+
+<h3 id="chain">Chain</h3>
+
+<p>This is the simplest DAG and is represented in the example above.  A generalized representation below shows that A is a cause of B, which is itself a cause of C.</p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-1.png" alt="" /></p>
+
+<h3 id="collider">Collider</h3>
+
+<p>Now we have two causes for C.  <strong>Both A and B affect the outcome C.</strong></p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-3.png" alt="" /></p>
+
+<p>Conditioning on C will reveal a non-causal, _negative _correlation between A &amp; B.  This correlation is called <strong>collider bias</strong>.</p>
+
+<p>We can understand this effect in crude mathematical terms.  If A + B = C and we hold C constant, then we must increase A by the same amount we decrease B.</p>
+
+<p>Additionally, this phenomenon is sometimes also called the “explain-away effect” because C “explains away” the correlation between A and B.</p>
+
+<p>Note that the collider bias may be positive in cases when contributions from both A and B are necessary to affect C.</p>
+
+<p>An example of a collider relationship would be the age-old nature vs. nurture question.  Someone’s personality (C) is a product of both their upbringing (A) and the genes (B).</p>
+
+<h3 id="fork">Fork</h3>
+
+<p>In the case of a fork, **A affects both B and C. **</p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-4.png" alt="" /></p>
+
+<p>Without conditioning on A, there exists a spurious (non-causal) correlation between B &amp; C.  A classic example of a spurious correlation is the relationship between crime (B) and ice cream sales (C).  When you plot these two values over time, they appear to increase and decrease together, suggesting some kind of causality.  Does ice cream cause people to commit crime?</p>
+
+<p>Of course, this relationship can be explained by adding in temperature (A).  Warmer weather causes people to leave their homes more often, leading to more crime (B).  People also crave ice cream cones (C) on hot days.</p>
+
+<h2 id="node-types">Node Types</h2>
+
+<h3 id="mediators">Mediators</h3>
+
+<p>A mediator is the node that “mediates” or <strong>transmits a causal effect</strong> from one node to another.</p>
+
+<p>Again using the example below, B mediates the causal effect of A onto C.</p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-1.png" alt="" /></p>
+
+<h3 id="confounders">Confounders</h3>
+
+<p>Harking back to the crime-and-ice-cream example, temperature is the confounder node as it “confounds” the relationship between ice cream sales and crime.</p>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-4.png" alt="" /></p>
+
+<p>**If we control for the confounder (A), we can isolate the relationship between C and B, if one exists. ** This is a key concept for experimental design.</p>
+
+<h2 id="correcting-for-confounding">Correcting for Confounding</h2>
+
+<p>Let’s spend some more time on this subject.  Pearl’s assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Pearl defines confounding more broadly as any relationship that leads to [latexpage]$P(Y</td>
+      <td>do(X)) \neq P(Y</td>
+      <td>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="four-rules-of-information-flow">Four Rules of Information Flow</h3>
+
+<p>Pearl has 4 rules for controlling the flow of information through a DAG.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. In a chain (A -&gt; B -&gt; C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+  
+ 
+
+2. In a fork (A &lt;- B -&gt; C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+  
+
+
+3. In a collider (A -&gt; B &lt;- C), controlling for B "opens up" the pipe between A and C due to the explain-away effect.
+  
+
+
+4. Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.
+</code></pre></div></div>
+
+<h3 id="back-door-criterion">Back-door criterion</h3>
+
+<p>We can use these causal models as represented by DAG’s to determine how exactly we should remove this confounding from our study.</p>
+
+<p>If we are interested in understanding the relationship between only X and Y, we must identify and dispatch any confounding back-door paths, where <strong>a back-door path is any path from X to Y that starts with an arrow into X</strong>.</p>
+
+<h3 id="pearls-games">Pearl’s Games</h3>
+
+<p>Pearl devises a series of games that involve increasingly complicated DAG’s where the objective is to “deconfound” the path from X to Y.  This is achieved by <strong>blocking every non-causal path</strong> while leaving all causal paths intact.</p>
+
+<p>In other words, we need to identify and block all back-door paths while ensuring that any variable Z on a back-door path is not a descendant of X via a causal path to Y.</p>
+
+<p>Let’s go through some examples, using the numbered games from the book.</p>
+
+<h4 id="game-2">Game 2</h4>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-8.png" alt="" /></p>
+
+<p>We need to determine which variables (if any) of A, B, C, D, or E need to be controlled in order to deconfound the path from X to Y.</p>
+
+<p>There is one back-door path: X ← A → B ← D → E → Y.  This path is blocked by the collider at B from the third rule of information flow.</p>
+
+<p>Therefore, there is no need to control any of these variables!</p>
+
+<h4 id="game-5">Game 5</h4>
+
+<p><img src="https://melhanna.com/wp-content/uploads/2020/06/Capture-9.png" alt="" /></p>
+
+<p>This one’s a bit more interesting.  We have two back-door paths:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. X ← A → B ← C → Y
+  
+ 
+
+2. X ← B ← C → Y
+</code></pre></div></div>
+
+<p>The first back-door path is blocked by a collider at B so there is no need to control any variables due to this relationship.</p>
+
+<p>The second path, however, represents a non-causal path between X and Y.  We need to control for either B or C.</p>
+
+<p>But watch out!  If we control for B, we fall into the condition outlined by Pearl’s third rule above, where we’ve controlled for a collider and thus opened up the first back-door path in this diagram.</p>
+
+<p>Therefore, if we control for B, we will then have to control for A or C as well.  However, we can also control for only C initially and avoid the collider bias altogether.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>DAG’s can be an informative way to organize our mental models around causal relationships.  Keeping in mind Pearl’s Four Rules of Information Flow, we can identify confounding variables that cloud the true relationship between the variables under study.</p>
+
+<p>Bringing this home for data scientists, when we include the data generation process as a variable in a DAG, we remove much of the mystery surrounding such pitfalls as Simpson’s Paradox.  We’re able to think more like informed humans and less like data-crunching machines—an ability we should all be striving for in our increasingly AI-driven world.</p>
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="mdhanna/mels_blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/mels_blog/things%20i'm%20reading/2020/06/24/applying-dags-to-causal-models.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/mels_blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/mels_blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/mels_blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
