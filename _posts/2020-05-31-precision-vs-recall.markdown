@@ -34,7 +34,7 @@ Something I struggled with initially was what exactly did we mean by a "false ne
 The answer is the latter definition above.  The table below sums this up.
 
 
-![Capture-5.png](images/precision_recall/Capture-5.png)
+![Capture-5.png](Images/precision_recall/Capture-5.png)
 
 
 ## Confusion matrix
@@ -48,7 +48,7 @@ Here is an example for a classifier that attempts to determine if shoplifting is
 The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.
 
 
-![](images/precision_recall/download-5.png)
+![image](Images/precision_recall/download-5.png)
 
 
 From the matrix above, we can see that our classifier is rather paranoid and often mistakes normal behavior for shoplifting.
@@ -58,16 +58,16 @@ From the matrix above, we can see that our classifier is rather paranoid and oft
 
 
 Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
-<br></br>
+<br>
 
 <p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 
-<br></br>
-Wowza, this is a terrible model.
+<br>
+Unfortunately, this model is performing far worse than random.
 
-<br></br>
+<br>
 **WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
-<br></br>
+<br>
 In other words,  because we have so few true shoplifting incidences compared to cases of normal behavior, we can easily achieve an accuracy of 0.904 by returning a prediction of "normal" every time.  But no one would consider such a classifier to be truly "accurate".
 
 
@@ -84,74 +84,27 @@ This is where precision and recall come into play.  These metrics are **class-sp
 Precision is the answer to the question: out of the **total predictions** for a certain class returned by the model, how many were actually correct?  For example, the precision for the shoplifting class is:
 
 
-
-
-
-
-
 <p style="text-align: center;">$precision = \frac{TP}{TP\ +\ FP}$</p>
 
-
-
-
-
-
-
 <p style="text-align: center;">$precision_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total predicted shoplifting}} = \frac{40}{40+345} = 0.104$</p>
-
-
-
-
-
 
 
 Similarly, for the normal behavior:
 
 
-
-
-
-
-
 <p style="text-align: center;">$precision_{normal} = \frac{\text{ true normal}}{\text{ total predicted normal}} = \frac{107}{107+8} = 0.930$</p>
-
-
-
-
-
 
 
 In other words, the model's predictions for normal behavior were correct 93% of the time, while its predictions for shoplifting were correct only _10%_ of the time.  Yikes.
 
 
 
-
-
-
-
 #### **Recall**
-
-
-
-
-
 
 
 I like to think of recall as a **class-specific accuracy**.  How many of the model's predictions for a certain class were actually correct?
 
-
-
-
-
-
-
 <p style="text-align: center;">$recall = \frac{TP}{TP\ +\ FN}$</p>
-
-
-
-
-
-
 
 <p style="text-align: center;">$recall_{shoplifting} = \frac{\text{ true shoplifting}}{\text{ total actual shoplifting}} = \frac{40}{40+8} = 0.833$</p>
 
