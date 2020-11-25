@@ -1,5 +1,4 @@
 ---
-author: Mel
 comments: true
 date: 2020-06-30 03:07:16+00:00
 layout: post
@@ -10,9 +9,6 @@ wordpress_id: 175
 categories:
 - Management
 ---
-
-
-
 
 It'd be an understatement to say that so far, 2020 has been a tough year for nearly everyone.  From a global pandemic sickening millions of people to civil unrest rocking the United States and beyond, the world seems to have turned upside down.
 
@@ -28,7 +24,8 @@ _**Managers should care personally and challenge directly.**_
 
 Fleshing this out a bit more, Scott created a matrix to show how managers might fall short on either of these goals.
 
-![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)
+![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)
+Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)
 
   * **Obnoxious Aggression**: A manager who isn't afraid to challenge his/her employees but has made no effort to show that he/she cares about them as people or is invested in their success.  
   
