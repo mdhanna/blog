@@ -20,7 +20,7 @@ If we can look past his self-aggrandizing remarks, "The Book of Why" applies cau
 
 Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think_ about what this data actually represents.
 
-<p style="text-align: center;"><div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="40%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a><div>Data scientists with a new dataset</div></div><script type="text/javascript" async="" src="https://tenor.com/embed.js" alt="Data scientists with a new dataset"></script></p>
+<center><img src="{{site.baseurl}}/images/candor/tenor.gif" alt="BLAH" height="150" width="200"></center>
 
 By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.
 
