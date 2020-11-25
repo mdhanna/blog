@@ -20,7 +20,7 @@ If we can look past his self-aggrandizing remarks, "The Book of Why" applies cau
 
 Perhaps the biggest takeaway for me from this book is the need to **understand the data generation process when working with a dataset**.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don't stop to _think_ about what this data actually represents.
 
-<center><img src="{{site.baseurl}}/images/candor/tenor.gif" alt="bazinga" height="300" width="200"></center>
+<center><img src="{{site.baseurl}}/images/candor/tenor.gif" alt="bazinga" height="300" width="220"><caption>BLAH</caption></center>
 
 By including the process by which the data was generated in these causal models, we can augment our own mental model and unlock the true relationships behind the variables of interest.
 
@@ -91,7 +91,7 @@ Harking back to the crime-and-ice-cream example, temperature is the confounder n
 
 Let's spend some more time on this subject.  Pearl's assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.
 
-Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>&#124;</span>do(X))\neqP(Y<span>&#124;</span>X)$ $, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
+Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>&#124;</span>do(X))$\neq$P(Y<span>&#124;</span>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
 
 ### Four Rules of Information Flow
 
