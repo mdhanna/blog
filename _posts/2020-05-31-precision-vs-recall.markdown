@@ -58,16 +58,16 @@ From the matrix above, we can see that our classifier is rather paranoid and oft
 
 
 Now we can start to sum up the classifier's performance using a single value, such as the **accuracy**, which represents the fraction of correct predictions out of the total.  In the shoplifting example, the accuracy is shown by the following:
-
+<br></br>
 
 <p style="text-align: center;">$accuracy = \frac{\text{ true positives}\ + \text{ true negatives}}{\text{ total classified}} = \frac{40+ 107}{40+ 107+ 345 + 8} = 0.294$</p>
 
-
+<br></br>
 Wowza, this is a terrible model.
 
-<b></b>
+<br></br>
 **WARNING:** Note that accuracy is a **misleading metric** in this case due to unbalanced class sizes.
-
+<br></br>
 In other words,  because we have so few true shoplifting incidences compared to cases of normal behavior, we can easily achieve an accuracy of 0.904 by returning a prediction of "normal" every time.  But no one would consider such a classifier to be truly "accurate".
 
 
