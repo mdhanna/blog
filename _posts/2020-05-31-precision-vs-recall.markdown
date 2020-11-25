@@ -30,7 +30,7 @@ Something I struggled with initially was what exactly did we mean by a "false ne
 The answer is the latter definition above.  The table below sums this up.
 
 
-![Capture-5.png](Images/precision_recall/Capture-5.png)
+![]({{site.baseurl}}/Images/precision_recall/Capture-5.png)
 
 
 ## Confusion matrix
@@ -42,7 +42,7 @@ Once you've established your false positives and false negatives, you can displa
 Here is an example for a classifier that attempts to determine if shoplifting is taking place (where we define a shoplifting incident as a _positive_).  Let's say for example, this model takes video footage from a store surveillance system and looks for certain features (ex. a customer picking up an item and hiding it under his/her shirt) that would indicate shoplifting.
 
 The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.
-![image](Images/precision_recall/download-5.png)
+![]({{site.baseurl}}/Images/precision_recall/download-5.png)
 
 From the matrix above, we can see that our classifier is rather paranoid and often mistakes normal behavior for shoplifting.
 
