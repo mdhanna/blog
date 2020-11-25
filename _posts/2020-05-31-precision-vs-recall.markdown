@@ -42,11 +42,7 @@ Once you've established your false positives and false negatives, you can displa
 Here is an example for a classifier that attempts to determine if shoplifting is taking place (where we define a shoplifting incident as a _positive_).  Let's say for example, this model takes video footage from a store surveillance system and looks for certain features (ex. a customer picking up an item and hiding it under his/her shirt) that would indicate shoplifting.
 
 The confusion matrix shows the number of observations for each class and the corresponding predictions from the model.
-
-<img src="Images/precision_recall/download-5.png" alt="Italian Trulli">
 ![image](Images/precision_recall/download-5.png)
-<img src="images/precision_recall/download-5.png" alt="Italian Trulli">
-![image](images/precision_recall/download-5.png)
 
 From the matrix above, we can see that our classifier is rather paranoid and often mistakes normal behavior for shoplifting.
 
@@ -132,6 +128,6 @@ If you'd like to place more importance on recall over precision, you can introdu
 
 <br>
 <p style="text-align: center;">$F_{\beta} = (1\ +\ \beta^2) * \frac{precision\ *\ recall}{(\beta^2\ *\ precision)\ +\ recall}$</p>
-
+<br>
 
 
