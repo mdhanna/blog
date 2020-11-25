@@ -115,7 +115,7 @@ window.onload = wrap_img;
 
 <p>Perhaps the biggest takeaway for me from this book is the need to <strong>understand the data generation process when working with a dataset</strong>.  This might sound like a no-brainer but too often, data scientists are so eager to jump in to the big shiny ball pit of a new dataset that they don’t stop to <em>think</em> about what this data actually represents.</p>
 
-<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="70%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div>
+<div class="tenor-gif-embed" data-postid="6163998" data-share-method="host" data-width="50%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/bazinga-gif-6163998">Bazinga GIF</a> from <a href="https://tenor.com/search/bazinga-gifs">Bazinga GIFs</a></div>
 <script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
 
 <p><i>&lt;p style="color:black;font-size:12px;"&gt;Data scientists with a new dataset&lt;/p&gt;</i></p>
@@ -191,8 +191,7 @@ window.onload = wrap_img;
 <table>
   <tbody>
     <tr>
-      <td>Pearl defines confounding more broadly as any relationship that leads to $P(Y</td>
-      <td>do(X))\neqP(Y</td>
+      <td>Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>|</span>do(X)) \neq P(Y</td>
       <td>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</td>
     </tr>
   </tbody>
@@ -203,13 +202,21 @@ window.onload = wrap_img;
 <p>Pearl has 4 rules for controlling the flow of information through a DAG.</p>
 
 <ol>
-  <li>In a chain (A -&gt; B -&gt; C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
-<br /></li>
-  <li>In a fork (A &lt;- B -&gt; C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
-<br /></li>
-  <li>In a collider (A -&gt; B &lt;- C), controlling for B “opens up” the pipe between A and C due to the explain-away effect.
-<br /></li>
-  <li>Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.</li>
+  <li>
+    <p>In a chain (A -&gt; B -&gt; C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+<br /></p>
+  </li>
+  <li>
+    <p>In a fork (A &lt;- B -&gt; C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+<br /></p>
+  </li>
+  <li>
+    <p>In a collider (A -&gt; B &lt;- C), controlling for B “opens up” the pipe between A and C due to the explain-away effect.
+<br /></p>
+  </li>
+  <li>
+    <p>Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.</p>
+  </li>
 </ol>
 
 <h3 id="back-door-criterion">Back-door criterion</h3>
