@@ -182,10 +182,10 @@ window.onload = wrap_img;
 <p><strong>If we control for the confounder (A), we can isolate the relationship between C and B, if one exists.</strong> This is a key concept for experimental design.</p>
 
 <h2 id="correcting-for-confounding">Correcting for Confounding</h2>
+<p>$ P(Y<span>|</span>do(X))\neqP(Y<span>|</span>X),$ 
+Let’s spend some more time on this subject.  Pearl’s assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.</p>
 
-<p>Let’s spend some more time on this subject.  Pearl’s assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.</p>
-
-<p>Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>|</span>do(X))\neqP(Y<span>|</span>X),$ where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</p>
+<p>Pearl defines confounding more broadly as any relationship that leads to where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.</p>
 
 <h3 id="four-rules-of-information-flow">Four Rules of Information Flow</h3>
 
