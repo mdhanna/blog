@@ -88,7 +88,7 @@ Harking back to the crime-and-ice-cream example, temperature is the confounder n
 **If we control for the confounder (A), we can isolate the relationship between C and B, if one exists.** This is a key concept for experimental design.
 
 ## Correcting for Confounding
-$ P(Y<span>&#124;</span>do(X))\neqP(Y<span>&#124;</span>X),$ 
+$P(Y$<span>&#124;</span>do(X))\neqP(Y<span>&#124;</span>X)$, 
 Let's spend some more time on this subject.  Pearl's assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.
 
 Pearl defines confounding more broadly as any relationship that leads to where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
