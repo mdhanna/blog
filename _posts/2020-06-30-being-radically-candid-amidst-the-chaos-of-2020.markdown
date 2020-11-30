@@ -24,9 +24,11 @@ _**Managers should care personally and challenge directly.**_
 
 Fleshing this out a bit more, Scott created a matrix to show how managers might fall short on either of these goals.
 
+<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png"><caption>
+Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)</caption></center>
+
 ![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)
 
-Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)
 
   * **Obnoxious Aggression**: A manager who isn't afraid to challenge his/her employees but has made no effort to show that he/she cares about them as people or is invested in their success.  
   
