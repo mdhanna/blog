@@ -91,19 +91,19 @@ Harking back to the crime-and-ice-cream example, temperature is the confounder n
 
 Let's spend some more time on this subject.  Pearl's assertion is that if we control for all confounders, we should be able to isolate the relationship between the variables of interest and therefore prove causation, instead of mere correlation.
 
-Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>&#124;</span>do(X))$$\neq$$P(Y<span>&#124;</span>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
+Pearl defines confounding more broadly as any relationship that leads to $P(Y<span>&#124;</span>do(X))$ $\neq$$P(Y<span>&#124;</span>X)$, where the $do$ operator implies an action.  In other words, if there is a difference between the probability of an outcome $Y$ given $X$ and the probability of $Y$ given $X$ in a perfect world in which we were able to change $X$ and only $X$, then confounding is afoot.
 
 ### Four Rules of Information Flow
 
 Pearl has 4 rules for controlling the flow of information through a DAG.
 
-1. In a chain (A &rarr B &rarr C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+1. In a chain (A → B → C), B carries information from A to C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
 <br>
 
-2. In a fork (A &larr B &rarr C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
+2. In a fork (A ← B → C), B is the only known common source of information between both A and C.  Therefore, controlling for B prevents information about A from reaching C and vice versa.
 <br>
 
-3. In a collider (A &rarr B &larr C), controlling for B "opens up" the pipe between A and C due to the explain-away effect.
+3. In a collider (A → B ← C), controlling for B "opens up" the pipe between A and C due to the explain-away effect.
 <br>
 
 4. Controlling for descendants of a variable will partially control for the variable itself.  Therefore, controlling the descendant of a mediator partially closes the pipe, and controlling for the descendant of a collider partially opens the pipe.
