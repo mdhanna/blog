@@ -22,11 +22,8 @@ _**Managers should care personally and challenge directly.**_
 
 Fleshing this out a bit more, Scott created a matrix to show how managers might fall short on either of these goals.
 
-<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-768x650.png" alt="bazinga" height="668" width="550"><caption>
+<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-768x650.png" alt="bazinga" height="568" width="550"><caption>
 Credit to <a href="https://www.radicalcandor.com/our-approach/">radicalcandor.com</a></caption></center>
-
-![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)
-
 
   * **Obnoxious Aggression**: A manager who isn't afraid to challenge his/her employees but has made no effort to show that he/she cares about them as people or is invested in their success.  
   
@@ -48,7 +45,8 @@ Scott also emphasizes the importance of real-time feedback.  You might typically
 
 While these two possibilities should be reason enough to start giving feedback immediately whenever possible, I like to think about real-time feedback as analogous to compound interest.  Any armchair investor knows that continuously compounded interest grows at a much faster rate than annual or "simple" interest.
 
-![]({{site.baseurl}}/images/candor/Screen-Shot-2020-06-29-at-9.04.57-PM-1024x611.png)Credit to [https://www.fool.com/knowledge-center/compound-interest.aspx](https://www.fool.com/knowledge-center/compound-interest.aspx)
+<center><img src="{{site.baseurl}}/images/candor/Screen-Shot-2020-06-29-at-9.04.57-PM-1024x611.png" alt="bazinga" height="611" width="1024"><caption>
+Credit to <a href="https://www.fool.com/knowledge-center/compound-interest.aspx">fool.com</a></caption></center>
 
 Feedback works the same way.  **If we frequently give small amounts of both positive and negative feedback, the recipient will compound their growth accordingly.**
 
