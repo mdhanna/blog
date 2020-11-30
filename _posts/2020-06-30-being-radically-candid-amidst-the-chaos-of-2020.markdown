@@ -2,10 +2,8 @@
 comments: true
 date: 2020-06-30 03:07:16+00:00
 layout: post
-link: https://melhanna.com/being-radically-candid-amidst-the-chaos-of-2020/
 slug: being-radically-candid-amidst-the-chaos-of-2020
 title: Being Radically Candid amidst the Chaos of 2020
-wordpress_id: 175
 categories:
 - Management
 ---
@@ -24,7 +22,7 @@ _**Managers should care personally and challenge directly.**_
 
 Fleshing this out a bit more, Scott created a matrix to show how managers might fall short on either of these goals.
 
-<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png"><caption>
+<center><img src="{{site.baseurl}}/images/candor/tenor.gif"><caption>
 Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)</caption></center>
 
 ![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)
@@ -48,7 +46,7 @@ Scott also emphasizes the importance of real-time feedback.  You might typically
 
   * **Repeat Offender:** Even worse, Eric might have already given another presentation in the meantime with the same poor quality and lackluster results.
 
-While these two possibilities should be reason enough to instate give feedback immediately whenever possible, I like to think about real-time feedback as analogous to compound interest.  Any armchair investor knows that continuously compounded interest grows at a much faster rate than annual or "simple" interest.
+While these two possibilities should be reason enough to start giving feedback immediately whenever possible, I like to think about real-time feedback as analogous to compound interest.  Any armchair investor knows that continuously compounded interest grows at a much faster rate than annual or "simple" interest.
 
 ![]({{site.baseurl}}/images/candor/Screen-Shot-2020-06-29-at-9.04.57-PM-1024x611.png)Credit to [https://www.fool.com/knowledge-center/compound-interest.aspx](https://www.fool.com/knowledge-center/compound-interest.aspx)
 
