@@ -22,8 +22,8 @@ _**Managers should care personally and challenge directly.**_
 
 Fleshing this out a bit more, Scott created a matrix to show how managers might fall short on either of these goals.
 
-<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-768x650.png" alt="bazinga" height="320" width="250"><caption>
-Credit to [https://www.radicalcandor.com/our-approach/](https://www.radicalcandor.com/our-approach/)</caption></center>
+<center><img src="{{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-768x650.png" alt="bazinga" height="668" width="550"><caption>
+Credit to <a href="https://www.radicalcandor.com/our-approach/">radicalcandor.com</a></caption></center>
 
 ![]({{site.baseurl}}/images/candor/1_14d4twbWY4uEScCbQj_9bw-1024x866.png)
 
