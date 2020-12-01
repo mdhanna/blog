@@ -151,10 +151,10 @@ window.onload = wrap_img;
 <h3 id="Physical-differences">Physical differences<a class="anchor-link" href="#Physical-differences"> </a></h3><p>English labs tend to be shorter in height and wider in girth.  They have shorter snouts and thicker coats.  American labs by contrast are taller and thinner with a longer snout.</p>
 <div class="row">
   <div class="column">
-    <img src="/mels_blog/images/dogs/english.jpg" alt="English" style="width:50%" /><figcaption>English</figcaption>
+    <img src="/mels_blog/images/dogs/english.jpg" alt="English" style="width:40%" /><figcaption>English</figcaption>
   </div>
   <div class="column">
-    <img src="/mels_blog/images/dogs/american.jpg" alt="American" style="width:50%" /><figcaption>American</figcaption>
+    <img src="/mels_blog/images/dogs/american.jpg" alt="American" style="width:40%" /><figcaption>American</figcaption>
   </div>
 </div><p>These differences may not be stark as both are still Labrador Retrievers and are not bred to a standard.</p>
 
@@ -163,27 +163,11 @@ window.onload = wrap_img;
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Gathering-data">Gathering data<a class="anchor-link" href="#Gathering-data"> </a></h2>
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/storage/dogs&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<h2 id="Gathering-data">Gathering data<a class="anchor-link" href="#Gathering-data"> </a></h2><p>First we need images of both American and English labs on which to train our model.  The fastai course leverages the Bing Image Search API through MS Azure.  The code below shows how I downloaded 150 images each of English and American labrador retrievers and stored them in respective directories.</p>
 
 </div>
-    
-
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -208,16 +192,26 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="s1">&#39;american&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/storage/dogs&#39;</span><span class="p">)</span>
+
+<span class="n">subscription_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># key obtained through MS Azure</span>
+<span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.bing.microsoft.com/v7.0/images/search&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ocp-Apim-Subscription-Key&quot;</span> <span class="p">:</span> <span class="n">subscription_key</span><span class="p">}</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="s1">&#39;american&#39;</span><span class="p">]</span>
 
 <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
     <span class="n">path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
     <span class="n">dest</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="n">o</span><span class="p">)</span>
     <span class="n">dest</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">params</span>  <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> labrador retriever&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="p">),</span> <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="s2">&quot;imageType&quot;</span><span class="p">:</span> <span class="s2">&quot;photo&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="s2">&quot;150&quot;</span><span class="p">}</span>
+    <span class="n">params</span>  <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> labrador retriever&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="p">),</span>
+        <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imageType&quot;</span><span class="p">:</span> <span class="s2">&quot;photo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="s2">&quot;150&quot;</span>
+    <span class="p">}</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -229,80 +223,6 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>english
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>american
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fns</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">fns</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(#300) [Path(&#39;/storage/dogs/english/00000044.jpg&#39;),Path(&#39;/storage/dogs/english/00000093.png&#39;),Path(&#39;/storage/dogs/english/00000098.jpg&#39;),Path(&#39;/storage/dogs/english/00000100.jpg&#39;),Path(&#39;/storage/dogs/english/00000122.jpg&#39;),Path(&#39;/storage/dogs/english/00000062.jpg&#39;),Path(&#39;/storage/dogs/english/00000074.jpg&#39;),Path(&#39;/storage/dogs/english/00000101.jpg&#39;),Path(&#39;/storage/dogs/english/00000056.jpg&#39;),Path(&#39;/storage/dogs/english/00000029.jpg&#39;)...]</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -318,6 +238,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
+<span class="n">fns</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">fns_subdirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">]</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">fns_subdirs</span><span class="p">)</span>
 <span class="n">counts</span>
@@ -353,93 +274,8 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">insufficient_data_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">]</span>
-<span class="n">insufficient_data_paths</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">names</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">insufficient_data_paths</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">insufficient_data_paths</span><span class="p">:</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="n">name</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fns_updated</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">failed</span> <span class="o">=</span> <span class="n">verify_images</span><span class="p">(</span><span class="n">fns_updated</span><span class="p">)</span>
+<span class="n">failed</span> <span class="o">=</span> <span class="n">verify_images</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span>
 <span class="n">failed</span>
 </pre></div>
 
@@ -465,42 +301,6 @@ window.onload = wrap_img;
 
 <div class="output_text output_subarea output_execute_result">
 <pre>(#1) [Path(&#39;/storage/dogs/english/00000133.svg&#39;)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-
-<span class="n">failed_subdirs</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">failed</span><span class="p">]</span>
-<span class="n">Counter</span><span class="p">(</span><span class="n">failed_subdirs</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Counter({&#39;storage&#39;: 1})</pre>
 </div>
 
 </div>
@@ -550,8 +350,7 @@ window.onload = wrap_img;
         <span class="n">item_tfms</span><span class="o">=</span><span class="n">Resize</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">dogs</span> <span class="o">=</span> <span class="n">dogs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-        <span class="n">item_tfms</span><span class="o">=</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="n">min_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
-    <span class="c1">#     batch_tfms=aug_transforms()</span>
+        <span class="n">item_tfms</span><span class="o">=</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="n">min_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">dogs</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
