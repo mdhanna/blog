@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Classifying Labradors with fastai | Mel Hanna</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Classifying Labradors with fastai" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Random thoughts and fun projects." />
+<meta property="og:description" content="Random thoughts and fun projects." />
+<link rel="canonical" href="https://mdhanna.github.io/mels_blog/2020/12/10/dog-classifier.html" />
+<meta property="og:url" content="https://mdhanna.github.io/mels_blog/2020/12/10/dog-classifier.html" />
+<meta property="og:site_name" content="Mel Hanna" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-10T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://mdhanna.github.io/mels_blog/2020/12/10/dog-classifier.html","@type":"BlogPosting","headline":"Classifying Labradors with fastai","dateModified":"2020-12-10T00:00:00-06:00","datePublished":"2020-12-10T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/mels_blog/2020/12/10/dog-classifier.html"},"description":"Random thoughts and fun projects.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/mels_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/mels_blog/feed.xml" title="Mel Hanna" /><link rel="shortcut icon" type="image/x-icon" href="/mels_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/mels_blog/">Mel Hanna</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/mels_blog/about/">About Me</a><a class="page-link" href="/mels_blog/search/">Search</a><a class="page-link" href="/mels_blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Classifying Labradors with fastai</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-12-10T00:00:00-06:00" itemprop="datePublished">
+        Dec 10, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      8 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/mdhanna/mels_blog/tree/master/_notebooks/2020-12-10-dog-classifier.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/mels_blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/mdhanna/mels_blog/master?filepath=_notebooks%2F2020-12-10-dog-classifier.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/mels_blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/mdhanna/mels_blog/blob/master/_notebooks/2020-12-10-dog-classifier.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/mels_blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-12-10-dog-classifier.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although I've been a practicing data scientist for more than three years, deep learning remained an enigma to me.  I completed <a href="https://www.coursera.org/specializations/deep-learning">Andrew Ng's deep learning specialization</a> on Coursera last year but while I came away with a deeper understanding of the mathematical underpinnings of neural networks, I could not for the life of me build one myself.</p>
+<p>Enter <a href="fast.ai">fastai</a>.  With a mission to "make neural nets uncool again", fastai hands you all the tools to build a deep learning model <em>today</em>.  I've been working my way through their MOOC, <a href="https://course.fast.ai/">Practical Deep Learning for Coders</a>, one week at a time and reading the corresponding chapters in the <a href="https://www.oreilly.com/library/view/deep-learning-for/9781492045519/">book</a>.</p>
+<p>I really appreciate how the authors jump right in and ask you to get your hands dirty by building a model using their highly abstracted library (also called <a href="https://github.com/fastai">fastai</a>).  An education in the technical sciences too often starts with the nitty gritty fundamentals and abstruse theories and then works its way up to real-life applications.  By this time, of course, most of the students have thrown their hands up in despair and dropped out of the program.  The way fastai approaches teaching deep learning is to empower its students right off the bat with the ability to create a working model and then to ask you to look under the hood to understand how it operates and how we might troubleshoot or fine-tune our performance.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-brief-introduction-to-Labradors">A brief introduction to Labradors<a class="anchor-link" href="#A-brief-introduction-to-Labradors"> </a></h2><p>To follow along with the course, I decided to create a labrador retriever classifier.  I have an American lab named Sydney, and I thought the differences between English and American labs might pose a bit of a challenge to a convolutional neural net since the physical variation between the two types of dog can often be subtle.</p>
+<p>So, what's the difference?</p>
+<h3 id="Some-history">Some history<a class="anchor-link" href="#Some-history"> </a></h3><p>At the beginning of the 20th century, all labs looked similar to American labs.  They were working dogs and needed to be agile and athletic.  Around the 1940's, dog shows came popular, and breeders began selecting labrador retrievers based on appearance, eventually resulting in what we call the English lab.  English labs in England are actually called "show" or "bench" labs, while American labs over the pond are referred to as working Labradors.</p>
+<p>Nowadays, English labs are more commonly kept as pets while American labs are still popular with hunters and outdoorsmen.</p>
+<h3 id="Physical-differences">Physical differences<a class="anchor-link" href="#Physical-differences"> </a></h3><p>English labs tend to be shorter in height and wider in girth.  They have shorter snouts and thicker coats.  American labs by contrast are taller and thinner with a longer snout.</p>
+<div class="row">
+  <div class="column">
+    <img src="/mels_blog/images/dogs/english.jpg" alt="English" style="width:40%" /><figcaption>English</figcaption>
+  </div>
+  <div class="column">
+    <img src="/mels_blog/images/dogs/american.jpg" alt="American" style="width:40%" /><figcaption>American</figcaption>
+  </div>
+</div><p>These differences may not be stark as both are still Labrador Retrievers and are not bred to a standard.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Gathering-data">Gathering data<a class="anchor-link" href="#Gathering-data"> </a></h2><p>First we need images of both American and English labs on which to train our model.  The fastai course leverages the Bing Image Search API through MS Azure.  The code below shows how I downloaded 150 images each of English and American labrador retrievers and stored them in respective directories.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/storage/dogs&#39;</span><span class="p">)</span>
+
+<span class="n">subscription_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># key obtained through MS Azure</span>
+<span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.bing.microsoft.com/v7.0/images/search&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Ocp-Apim-Subscription-Key&quot;</span> <span class="p">:</span> <span class="n">subscription_key</span><span class="p">}</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="s1">&#39;american&#39;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">dest</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">dest</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">params</span>  <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> labrador retriever&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o</span><span class="p">),</span>
+        <span class="s2">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;public&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imageType&quot;</span><span class="p">:</span> <span class="s2">&quot;photo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span><span class="s2">&quot;150&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="n">search_results</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="n">img_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span><span class="p">[</span><span class="s1">&#39;contentUrl&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]]</span>
+
+    <span class="n">download_images</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">urls</span><span class="o">=</span><span class="n">img_urls</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's check if any of these files are corrupt.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fns_updated</span> <span class="o">=</span> <span class="n">get_image_files</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">failed</span> <span class="o">=</span> <span class="n">verify_images</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span>
+<span class="n">failed</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(#1) [Path(&#39;/storage/dogs/english/00000133.svg&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll remove that corrupt file from our images.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">failed</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">unlink</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="First-model-attempt">First model attempt<a class="anchor-link" href="#First-model-attempt"> </a></h2><p>I create a function to process the data using a fastai class called <code>DataBlock</code>, which does the following:</p>
+<ul>
+<li>Defines the independent data as an ImageBlock and the dependent data as a CategoryBlock</li>
+<li>Retrieves the data using a fastai function <code>get_image_files</code> from a given path</li>
+<li>Splits the data randomly into a 20% validation set and 80% training set</li>
+<li>Attaches the directory name ("english", "american") as the image labels</li>
+<li>Crops the images to a uniform 224 pixels by randomly selecting certain 224 pixel areas of each image, ensuring a minimum of 50% of the image is included in the crop.  This random cropping repeats for each epoch to capture different pieces of the image.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">process_dog_data</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">dogs</span> <span class="o">=</span> <span class="n">DataBlock</span><span class="p">(</span>
+        <span class="n">blocks</span><span class="o">=</span><span class="p">(</span><span class="n">ImageBlock</span><span class="p">,</span> <span class="n">CategoryBlock</span><span class="p">),</span> 
+        <span class="n">get_items</span><span class="o">=</span><span class="n">get_image_files</span><span class="p">,</span> 
+        <span class="n">splitter</span><span class="o">=</span><span class="n">RandomSplitter</span><span class="p">(</span><span class="n">valid_pct</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">44</span><span class="p">),</span>
+        <span class="n">get_y</span><span class="o">=</span><span class="n">parent_label</span><span class="p">,</span>
+        <span class="n">item_tfms</span><span class="o">=</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="n">min_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dogs</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The item transformation (<code>RandomResizedCrop</code>) is an important design consideration.  We want to use as much of the image as possible while ensuring a uniform size for processing.  But in the process of naive cropping, we may omitting pieces of the image that are important for classification (ex. the dog's snout).  Padding the image may help but wastes computation for the model and decreases resolution on the useful parts of the image.</p>
+<p>Another approach of resizing the image (instead of cropping) results in distortions, which is especially problematic for our use case as the main differences between English and American labs is in their proportions.  Therefore, we settle on the random cropping approach as a compromise.  This strategy also acts as a data augmentation technique by providing different "views" of the same dog to the model.</p>
+<p>Now we "fine-tine" ResNet-18, which replaces the last layer of the original ResNet-18 with a new random head and uses one epoch to fit this new model on our data.  Then we <em>fit</em> this new model for the number of epochs requested (in our case, 4), updating the weights of the later layers faster than the earlier ones.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dls</span> <span class="o">=</span> <span class="n">process_dog_data</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">learn</span> <span class="o">=</span> <span class="n">cnn_learner</span><span class="p">(</span><span class="n">dls</span><span class="p">,</span> <span class="n">resnet18</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">error_rate</span><span class="p">)</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">fine_tune</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.392489</td>
+      <td>0.944025</td>
+      <td>0.389831</td>
+      <td>00:15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.134894</td>
+      <td>0.818585</td>
+      <td>0.305085</td>
+      <td>00:15</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.009688</td>
+      <td>0.807327</td>
+      <td>0.322034</td>
+      <td>00:15</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.898921</td>
+      <td>0.833640</td>
+      <td>0.338983</td>
+      <td>00:15</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.781876</td>
+      <td>0.854603</td>
+      <td>0.372881</td>
+      <td>00:15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These numbers are not exactly ideal. While training and validation loss mainly decrease, our error rate is actually <em>increasing</em>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">interp</span> <span class="o">=</span> <span class="n">ClassificationInterpretation</span><span class="o">.</span><span class="n">from_learner</span><span class="p">(</span><span class="n">learn</span><span class="p">)</span>
+<span class="n">interp</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+" />
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The confusion matrix shows poor performance, especially on American labs.  We can take a closer look at our data using fastai's <code>ImageClassifierCleaner</code> tool, which displays the images with the highest loss for both training and validation sets.  We can then decide whether to delete these images or move them between classes.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cleaner</span> <span class="o">=</span> <span class="n">ImageClassifierCleaner</span><span class="p">(</span><span class="n">learn</span><span class="p">)</span>
+<span class="n">cleaner</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We definitely have a data quality problem here as we can see that the fifth photo from the left is a German shepherd and the fourth photo (and possibly the second) is a golden retriever.</p>
+<p>We can tag these kinds of images for removal and retrain our model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="After-data-cleaning">After data cleaning<a class="anchor-link" href="#After-data-cleaning"> </a></h2><p>Now I've gone through and removed 49 images from the original 300 that were not the correct classifications of American or English labs.  Let's see how this culling has affected performance.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dls</span> <span class="o">=</span> <span class="n">process_dog_data</span><span class="p">()</span>
+
+<span class="n">learn</span> <span class="o">=</span> <span class="n">cnn_learner</span><span class="p">(</span><span class="n">dls</span><span class="p">,</span> <span class="n">resnet18</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">error_rate</span><span class="p">)</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">fine_tune</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.255060</td>
+      <td>0.726968</td>
+      <td>0.380000</td>
+      <td>00:14</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.826457</td>
+      <td>0.670593</td>
+      <td>0.380000</td>
+      <td>00:14</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.797378</td>
+      <td>0.744757</td>
+      <td>0.320000</td>
+      <td>00:15</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.723976</td>
+      <td>0.809631</td>
+      <td>0.260000</td>
+      <td>00:15</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.660038</td>
+      <td>0.849696</td>
+      <td>0.280000</td>
+      <td>00:13</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Already we see improvement in that our error rate is finally <em>decreasing</em> for each epoch, although our validation loss increases.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">interp</span> <span class="o">=</span> <span class="n">ClassificationInterpretation</span><span class="o">.</span><span class="n">from_learner</span><span class="p">(</span><span class="n">learn</span><span class="p">)</span>
+<span class="n">interp</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+" />
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This confusion matrix shows much better classification for both American and English labs.</p>
+<p>Now let's see how this model performs on a photo of my own dog.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-the-Model-for-Inference">Using the Model for Inference<a class="anchor-link" href="#Using-the-Model-for-Inference"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I'll upload a photo of my dog Sydney.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">btn_upload</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FileUpload</span><span class="p">()</span>
+<span class="n">btn_upload</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">btn_upload</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">out_pl</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">out_pl</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">out_pl</span><span class="p">:</span> <span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">270</span><span class="p">)</span><span class="o">.</span><span class="n">to_thumb</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">out_pl</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This picture shows her elongated snout and sleeker body, trademarks of an American lab.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pred</span><span class="p">,</span><span class="n">pred_idx</span><span class="p">,</span><span class="n">probs</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">lbl_pred</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Label</span><span class="p">()</span>
+<span class="n">lbl_pred</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Prediction: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="s1">; Probability: </span><span class="si">{</span><span class="n">probs</span><span class="p">[</span><span class="n">pred_idx</span><span class="p">]</span><span class="si">:</span><span class="s1">.04f</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">lbl_pred</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The model got it right!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Take-aways">Take-aways<a class="anchor-link" href="#Take-aways"> </a></h2><p>If I were serious about improving this model, I'd manually look through all these images to confirm that they contain either English or American labs.  Based on the images shown by the cleaner tool, the Bing Image Search API does not return many relevant results and needs to be supervised closely.</p>
+<p>I was definitely surprised to achieve such decent performance on so few images.  I had always been under the impression that neural networks required a lot of data to avoid overfitting.  Granted, this may still be the case here based on the growing validatoin loss but I'm looking forward to learning more about this aspect later in the course.</p>
+<p>While I appreciate that the fastai library is easy-to-use and ideal for deep learning beginners, I found some of the functionality too abstracted at times and difficult to modify or troubleshoot.  I suspect that subsequent chapters will help me become more familiar with the library and feel more comfortable making adjustments but for someone used to working more with the nuts and bolts within Python, this kind of development felt like a loss of control.</p>
+<p>I'm extremely interested to understand how the model arrives at its classifications.  Is the model picking up on the same attributes that humans use to classify these dogs (i.e. snouts, body shapes)?  While I'm familiar with the SHAP library and its ability to highlight CNN feature importances within images, Chapter 18 of the book introduces "class activation maps" or CAM's to accomplish the same goal.  I'll revisit this model once I've made further progress in the course to apply some of these explanability techniques to our Labrador classifier and understand what makes it tick.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/mels_blog/2020/12/10/dog-classifier.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/mels_blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/mels_blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/mels_blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Random thoughts and fun projects.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
