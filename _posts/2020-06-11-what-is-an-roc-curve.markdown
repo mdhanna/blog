@@ -1,10 +1,12 @@
 ---
-comments: true
+comments: false
 date: 2020-06-11 02:16:15+00:00
 layout: post
 link: https://melhanna.com/what-is-an-roc-curve/
 slug: what-is-an-roc-curve
-title: What is an ROC curve?
+title: "Data Science 101: The ROC curve"
+description: "How to draw useful information from these popular plots."
+image: images/roc_curve/complete.png
 wordpress_id: 78
 categories:
 - Data Science Basics
