@@ -1,9 +1,11 @@
 ---
-comments: true
+comments: false
 date: 2020-06-30 03:07:16+00:00
 layout: post
 slug: being-radically-candid-amidst-the-chaos-of-2020
 title: Being Radically Candid amidst the Chaos of 2020
+description: 2020 has been a tough year.  Learning to love hard conversations can help us turn this time of crisis into an opportunity to change.
+image: images/candor/1_14d4twbWY4uEScCbQj_9bw-768x650.png
 categories:
 - Management
 ---
