@@ -10,22 +10,22 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="How to draw useful information from these popular plots." />
 <meta property="og:description" content="How to draw useful information from these popular plots." />
-<link rel="canonical" href="https://mdhanna.github.io/mels_blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" />
-<meta property="og:url" content="https://mdhanna.github.io/mels_blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" />
+<link rel="canonical" href="https://mdhanna.github.io/blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" />
+<meta property="og:url" content="https://mdhanna.github.io/blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" />
 <meta property="og:site_name" content="Mel Hanna" />
-<meta property="og:image" content="https://mdhanna.github.io/mels_blog/images/roc_curve/complete.png" />
+<meta property="og:image" content="https://mdhanna.github.io/blog/images/roc_curve/complete.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-06-10T21:16:15-05:00" />
 <script type="application/ld+json">
-{"url":"https://mdhanna.github.io/mels_blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html","@type":"BlogPosting","headline":"Data Science 101: The ROC curve","dateModified":"2020-06-10T21:16:15-05:00","datePublished":"2020-06-10T21:16:15-05:00","image":"https://mdhanna.github.io/mels_blog/images/roc_curve/complete.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/mels_blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html"},"description":"How to draw useful information from these popular plots.","@context":"https://schema.org"}</script>
+{"url":"https://mdhanna.github.io/blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html","@type":"BlogPosting","headline":"Data Science 101: The ROC curve","dateModified":"2020-06-10T21:16:15-05:00","datePublished":"2020-06-10T21:16:15-05:00","image":"https://mdhanna.github.io/blog/images/roc_curve/complete.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html"},"description":"How to draw useful information from these popular plots.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/mels_blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/mels_blog/feed.xml" title="Mel Hanna" /><!-- the google_analytics_id gets auto inserted from the config file -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/blog/feed.xml" title="Mel Hanna" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
 
 
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','G-36543P9G91','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
-<link rel="shortcut icon" type="image/x-icon" href="/mels_blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
@@ -76,7 +76,7 @@ window.onload = wrap_img;
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/mels_blog/">Mel Hanna</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Mel Hanna</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -86,7 +86,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/mels_blog/about/">About Me</a><a class="page-link" href="/mels_blog/search/">Search</a><a class="page-link" href="/mels_blog/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -107,7 +107,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/mels_blog/categories/#Data Science Basics">Data Science Basics</a>
+        <a class="category-tags-link" href="/blog/categories/#Data Science Basics">Data Science Basics</a>
         
       
       </p>
@@ -124,7 +124,7 @@ window.onload = wrap_img;
 
 <p>Let’s jump right in.  Here’s an ROC curve for a model that predicts credit card default (where a <em>positive</em> is considered to be a default).</p>
 
-<p><img src="/mels_blog/images/roc_curve/complete.png" alt="" /></p>
+<p><img src="/blog/images/roc_curve/complete.png" alt="" /></p>
 
 <h3 id="axes">Axes</h3>
 
@@ -160,13 +160,13 @@ window.onload = wrap_img;
 
 <p>For example, our model could determine a credit default using a probability threshold of 0.25.  If the model’s probability of default is 0.32, we would return “default”.  If the probability is 0.19, we could return “no default”.</p>
 
-<p><img src="/mels_blog/images/roc_curve/threshold_025.png" alt="" /></p>
+<p><img src="/blog/images/roc_curve/threshold_025.png" alt="" /></p>
 
 <p>This is illustrated in the ROC plot above.  The FPR and TPR for a threshold of 0.25 is represented by the black dot on the ROC curve.  Our TPR is roughly 0.7 and our FPR is around 0.45.</p>
 
 <p>Now, let’s lower the threshold to 0.15.</p>
 
-<p><img src="/mels_blog/images/roc_curve/threshold_015.png" alt="" /></p>
+<p><img src="/blog/images/roc_curve/threshold_015.png" alt="" /></p>
 
 <p>We move further up the curve, increasing our TPR to nearly 0.9 but also increasing our FPR to about 0.75.</p>
 
@@ -180,7 +180,7 @@ window.onload = wrap_img;
 
 <p>However, if we’d like to try and balance these two competing metrics, we can choose the point along the curve that is closest to the top-left corner of the plot.  This could be considered the apex of the curve, as shown below.</p>
 
-<p><img src="/mels_blog/images/roc_curve/download-10.png" alt="" /></p>
+<p><img src="/blog/images/roc_curve/download-10.png" alt="" /></p>
 
 <p>The apex can be found by determining where on the curve we find a maximum difference between TPR and FPR.  In our case, this occurs at a threshold of 0.29 to return a TPR of nearly 0.6 and a FPR of about 0.36.</p>
 
@@ -190,27 +190,27 @@ window.onload = wrap_img;
 
 <p>The area in gray below represents the AUC.</p>
 
-<p><img src="/mels_blog/images/roc_curve/download-12.png" alt="" /></p>
+<p><img src="/blog/images/roc_curve/download-12.png" alt="" /></p>
 
 <p>Our AUC for this model is 0.65.  A random model would produce an AUC of 0.5 so we are doing better than guessing!</p>
 
 <p>An ideal model would have an ROC curve that hugs the axes with an apex close to the upper-left corner, resulting in an AUC of nearly 1.0.  Therefore, AUC is a way to quantify the ability of the model to maximize TPR while minimizing FPR, no matter the threshold chosen.</p>
 
 
-  </div><a class="u-url" href="/mels_blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" hidden></a>
+  </div><a class="u-url" href="/blog/data%20science%20basics/2020/06/10/what-is-an-roc-curve.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/mels_blog/"></data>
+  <data class="u-url" href="/blog/"></data>
 
   <div class="wrapper">
 
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
-          <a href="/mels_blog/feed.xml">
+          <a href="/blog/feed.xml">
             <svg class="svg-icon orange">
-              <use xlink:href="/mels_blog/assets/minima-social-icons.svg#rss"></use>
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
             </svg><span>Subscribe</span>
           </a>
         </p>
@@ -220,7 +220,7 @@ window.onload = wrap_img;
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/mels_blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
 </div>
 
   </div>
