@@ -2,7 +2,6 @@
 comments: false
 date: 2020-05-31 23:47:51+00:00
 layout: post
-link: https://melhanna.com/precision-vs-recall/
 permalink: /precision-vs-recall/
 slug: precision-vs-recall
 title: "Data Science 101: Precision vs. recall"
