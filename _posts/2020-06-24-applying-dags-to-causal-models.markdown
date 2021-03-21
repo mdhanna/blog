@@ -3,6 +3,7 @@ comments: false
 date: 2020-06-24 11:35:00+00:00
 layout: post
 slug: applying-dags-to-causal-models
+permalink: /applying-dags-to-causal-models/
 title: Applying DAG's to Causal Models
 description: Visualizing causal pathways with the help of Judea Pearl.
 image: images/dags/Capture-9.png

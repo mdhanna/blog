@@ -1,7 +1,7 @@
 ---
 comments: false
 date: 2020-06-30 03:07:16+00:00
-permalink: /testing/
+permalink: /being-radically-candid-amidst-the-chaos-of-2020/
 layout: post
 slug: being-radically-candid-amidst-the-chaos-of-2020
 title: Being Radically Candid amidst the Chaos of 2020
