@@ -4,8 +4,4 @@ title: About Me
 permalink: /about/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
-
-
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+I’m a data scientist based in Chicago. The purpose of this space is mainly to organize my thoughts and notes around data science, pet projects, and interesting ideas I’ve encountered.
