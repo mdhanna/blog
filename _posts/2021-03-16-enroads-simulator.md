@@ -27,7 +27,9 @@ If you're interested in more of the science and math behind the simulation, the 
 
 The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables go directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
 
+\n
 ![]({{site.baseurl}}/images/enroads/base.PNG)
+
 
 Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\$110 per ton).  
 
@@ -39,7 +41,7 @@ I spent some time playing around with the simulator to limit our warming to 2&de
 
 My main takeaways from the simulation:
 
-### Carbon price of \$70 per ton → 0.5&deg;C temperature reduction
+#### Carbon price of \$70 per ton → 0.5&deg;C temperature reduction
 
 * Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
@@ -61,7 +63,9 @@ Other actions taken to limit warming to 2&deg;C included a reduction in deforest
 
 ![]({{site.baseurl}}/images/enroads/final.PNG)
 
-My final world is one in which we've electrified our homes and transit, phased out coal, aggressively plugged methane emissions, and protected and planted forests.  Of course, these initiatives are not simple&mdash;electrifying and retrofitting every home in America sounds daunting at best.  But it's not impossible.  From 1968 to 1976, The UK converted every single gas appliance in the country from town gas to natural gas.  Just eight years to accomplish what some called ["the greatest peacetime operation in the nation's history"](https://www.resilience.org/stories/2020-03-10/share-the-great-switch-lessons-from-when-14-million-homes-and-businesses-changed-fuel-in-less-than-a-decade/).
+My final world is one in which we've electrified our homes and transit, phased out coal, aggressively plugged methane emissions, and protected and planted forests.  Of course, these initiatives are not simple&mdash;electrifying and retrofitting every home in America sounds daunting at best.  
+
+But it's not impossible.  From 1968 to 1976, The UK converted every single gas appliance in the country from town gas to natural gas.  Just eight years to accomplish what some called ["the greatest peacetime operation in the nation's history"](https://www.resilience.org/stories/2020-03-10/share-the-great-switch-lessons-from-when-14-million-homes-and-businesses-changed-fuel-in-less-than-a-decade/).
 
 Where there's a will, there's a way.
 
