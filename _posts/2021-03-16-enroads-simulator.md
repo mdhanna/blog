@@ -40,11 +40,11 @@ I spent some time playing around with the simulator to limit our warming to 2&de
 
 My main takeaways from the simulation:
 
-### **Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
+#### **Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
 
 Implementing a carbon price resulted in the biggest bang for our buck.  
 
-The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". 
+The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$\35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". 
 
 Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
@@ -78,7 +78,7 @@ But it's not impossible.  From 1968 to 1976, The UK converted every single gas a
 
 Where there's a will, there's a way.
 
-## The power of good data viz
+## Data visualization for social change
 
 But perhaps a more immediate takeaway from the En-ROADS simulation is the experience of using the simulator itself.  By distilling the giant thorny problem of climate change into a tangible set of levers, the tool allows stakeholders (humans like us) to grasp the problem and its potential solutions.  It offers the ability to drill into a section if we want to understand the technical nitty-gritty but doesn't overwhelm the user with detail at first glance.
 
