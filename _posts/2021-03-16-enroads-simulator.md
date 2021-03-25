@@ -2,7 +2,6 @@
 comments: false
 date: 2021-05-31 23:47:51+00:00
 layout: post
-use_math: false
 title: "How intuitive data viz can tackle climate change"
 image: images/enroads/Capture.PNG
 description: User-friendly data visualizations can help us get a grip on global warming.
@@ -45,7 +44,7 @@ My main takeaways from the simulation:
 
 Implementing a carbon price resulted in the biggest bang for our buck.  
 
-The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of $\text{$35 for that flight to be a fee I could swallow and so set my carbon price at $70}$, a choice En-ROADS labeled "high". 
+The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". 
 
 Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
