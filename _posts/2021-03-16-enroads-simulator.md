@@ -26,6 +26,7 @@ If you're interested in more of the science and math behind the simulation, the 
 ## Let's start building our climate-friendly world
 
 The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables go directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
+
 &nbsp;  
 ![]({{site.baseurl}}/images/enroads/base.PNG)
 &nbsp;  
@@ -39,7 +40,7 @@ I spent some time playing around with the simulator to limit our warming to 2&de
 
 My main takeaways from the simulation:
 
-**Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
+### **Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
 
 Implementing a carbon price resulted in the biggest bang for our buck.  
 
@@ -76,6 +77,8 @@ My final world is one in which we've electrified our homes and transit, phased o
 But it's not impossible.  From 1968 to 1976, The UK converted every single gas appliance in the country from town gas to natural gas.  Just eight years to accomplish what some called ["the greatest peacetime operation in the nation's history"](https://www.resilience.org/stories/2020-03-10/share-the-great-switch-lessons-from-when-14-million-homes-and-businesses-changed-fuel-in-less-than-a-decade/).
 
 Where there's a will, there's a way.
+
+## The power of good data viz
 
 But perhaps a more immediate takeaway from the En-ROADS simulation is the experience of using the simulator itself.  By distilling the giant thorny problem of climate change into a tangible set of levers, the tool allows stakeholders (humans like us) to grasp the problem and its potential solutions.  It offers the ability to drill into a section if we want to understand the technical nitty-gritty but doesn't overwhelm the user with detail at first glance.
 
