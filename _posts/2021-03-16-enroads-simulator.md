@@ -2,6 +2,7 @@
 comments: false
 date: 2021-05-31 23:47:51+00:00
 layout: post
+latex: false
 title: "How intuitive data viz can tackle climate change"
 image: images/enroads/Capture.PNG
 description: User-friendly data visualizations can help us get a grip on global warming.
