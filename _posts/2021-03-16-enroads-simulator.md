@@ -27,11 +27,11 @@ If you're interested in more of the science and math behind the simulation, the 
 
 The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables goes directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
 
-![]({{site.baseurl}}/images/enroads/base.png)
+![]({{site.baseurl}}/images/enroads/base.PNG)
 
-Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\$110 per ton).  
+Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\n\$110 per ton).  
 
-![]({{site.baseurl}}/images/enroads/coal.png)
+![]({{site.baseurl}}/images/enroads/coal.PNG)
 
 Temperature increase is now at 3.4&deg;C.  Not exactly the big boost we were hoping for.
 
@@ -55,11 +55,11 @@ My main takeaways from the simulation:
 
 * Methane is low-hanging fruit.  While the simulator allows us to also limit emissions from certain industries (agriculture, mining, etc.), I set my reduction as 75% across the board.  This would require a more plant-based diet for all, as well as increased accountability within heavy industry to reduce methane emissions. 
 
-![]({{site.baseurl}}/images/enroads/methane.png)
+![]({{site.baseurl}}/images/enroads/methane.PNG)
 
 Other actions taken to limit warming to 2&deg;C included a reduction in deforestation with an increase in afforestation, as well as a modest subsidy for renewable energy.  Notably, I did not pull the lever on technological carbon removal, although it's an easy win to reduce warming.  Those technologies have not been proven out, and I don't believe we can count on them to swoop in and save the day.
 
-![]({{site.baseurl}}/images/enroads/final.png)
+![]({{site.baseurl}}/images/enroads/final.PNG)
 
 My final world is one in which we've electrified our homes and transit, phased out coal, aggressively plugged methane emissions, and protected and planted forests.  Of course, these initiatives are not simple&mdash;electrifying and retrofitting every home in America sounds daunting at best.  But it's not impossible.  From 1968 to 1976, The UK converted every single gas appliance in the country from town gas to natural gas.  Just eight years to accomplish what some called ["the greatest peacetime operation in the nation's history"](https://www.resilience.org/stories/2020-03-10/share-the-great-switch-lessons-from-when-14-million-homes-and-businesses-changed-fuel-in-less-than-a-decade/).
 
