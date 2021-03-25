@@ -21,27 +21,27 @@ This is where an intuitive climate simulator called [En-ROADS](https://www.clima
 
 Of course, it's not that simple. Under the hood, the simulator is running nearly 14,000 equations over 110 years from 1990 to 2100 in just 60 milliseconds.  These equations rely on factors such as delay times, progress ratios, price sensitivities, historic growth of energy sources, and energy efficiency potential culled from the literature. 
 
-If you're interested in more of the science and math behind the simulation, the En-ROADS team has documented all their assumptions, parameters, and equations in a [reference guide](https://img.climateinteractive.org/wp-content/uploads/2021/03/En-ROADS_Reference_Guide_030321.pdf) that runs nearly 400 pages long.  Climate Interactive's [docs](https://docs.climateinteractive.org/projects/en-roads/en/latest/index.html) also offers a much more digestible read that also includes a "Big Message" takeaway for each of the levers.  
+If you're interested in more of the science and math behind the simulation, the En-ROADS team has documented all their assumptions, parameters, and equations in a [reference guide](https://img.climateinteractive.org/wp-content/uploads/2021/03/En-ROADS_Reference_Guide_030321.pdf) that runs nearly 400 pages long.  Climate Interactive's [docs](https://docs.climateinteractive.org/projects/en-roads/en/latest/index.html) offer a more digestible read that also includes a "Big Message" takeaway for each of the levers.  
 
 ## Let's start building our new climate-friendly world.
 
-The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables goes directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
+The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables go directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
 
 ![]({{site.baseurl}}/images/enroads/base.PNG)
 
-Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\n\$110 per ton).  
+Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\$110 per ton).  
 
 ![]({{site.baseurl}}/images/enroads/coal.PNG)
 
 Temperature increase is now at 3.4&deg;C.  Not exactly the big boost we were hoping for.
 
-I spent some time playing around with the simulator to limit our warming to 2&deg;C, which is often cited as the [threshold before catastrophe](https://theconversation.com/why-is-climate-changes-2-degrees-celsius-of-warming-limit-so-important-82058). I tried to implement policies that I thought might be politically feasible in the United States.  Ones that either retooled existing jobs (electric cars vs. conventional ones) or created new business without disrupting existing ones (increased energy efficiency in buildings).  Tying clean energy to job creation, as [Biden has recently done](https://www.nytimes.com/2021/01/27/climate/biden-climate-executive-orders.html), is likely the best way to achieve bipartisan support for a carbonless future.
+I spent some time playing around with the simulator to limit our warming to 2&deg;C, which is often cited as the [threshold before catastrophe](https://theconversation.com/why-is-climate-changes-2-degrees-celsius-of-warming-limit-so-important-82058). I tried to implement policies that I thought might be politically feasible in the United States.  Ones that either retooled existing jobs (electric cars vs. conventional ones) or created new business without disrupting existing ones (increased energy efficiency in buildings).  
 
 My main takeaways from the simulation:
 
-**Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
+### Carbon price of \$70 per ton → 0.5&deg;C temperature reduction
 
-* Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of $CO_2$, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
+* Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
 **Population of 9.1 billion in 2100 → 0.1&deg;C temperature reduction**
 
