@@ -3,7 +3,7 @@ comments: false
 date: 2021-05-31 23:47:51+00:00
 layout: post
 title: "How intuitive data viz can tackle climate change"
-image: images/enroads/Capture.png
+image: images/enroads/Capture.PNG
 description: User-friendly data visualizations can help us get a grip on global warming.
 categories:
 - Data Visualization
@@ -17,19 +17,19 @@ Our best chance is for governments to step in and steer us toward a carbon-free 
 
 This is where an intuitive climate simulator called [En-ROADS](https://www.climateinteractive.org/tools/en-roads/) comes into play. Created by Climate Interactive and MIT Sloan’s Sustainability Initiative, this tool allows a user to effectively create their own policy solution to climate change.  
 
-*Solve global warming with the click of a button!*
+## Where are these numbers coming from?
 
 Of course, it's not that simple. Under the hood, the simulator is running nearly 14,000 equations over 110 years from 1990 to 2100 in just 60 milliseconds.  These equations rely on factors such as delay times, progress ratios, price sensitivities, historic growth of energy sources, and energy efficiency potential culled from the literature. 
 
 If you're interested in more of the science and math behind the simulation, the En-ROADS team has documented all their assumptions, parameters, and equations in a [reference guide](https://img.climateinteractive.org/wp-content/uploads/2021/03/En-ROADS_Reference_Guide_030321.pdf) that runs nearly 400 pages long.  Climate Interactive's [docs](https://docs.climateinteractive.org/projects/en-roads/en/latest/index.html) also offers a much more digestible read that also includes a "Big Message" takeaway for each of the levers.  
 
-But if instead you want to jump right in and click some buttons, let's start building our new climate-friendly world.
+## Let's start building our new climate-friendly world.
 
 The interface looks like the screenshot below, which shows the starting scenario.  This is "business-as-usual", leading us to an increase of 3.6&deg;C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time&mdash;however it looks like the additional renewables goes directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.
 
 ![]({{site.baseurl}}/images/enroads/base.png)
 
-Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\\$110 per ton).  
+Let's try to avert this disaster.  Coal seems like an easy place to start.  We'll tax it to the max (\$110 per ton).  
 
 ![]({{site.baseurl}}/images/enroads/coal.png)
 
@@ -39,9 +39,9 @@ I spent some time playing around with the simulator to limit our warming to 2&de
 
 My main takeaways from the simulation:
 
-**Carbon price of \\$70 per ton → 0.5&deg;C temperature reduction**
+**Carbon price of \$70 per ton → 0.5&deg;C temperature reduction**
 
-* Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of $CO_2$, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \\$35 for that flight to be a fee I could swallow and so set my carbon price at \\$70, a choice En-ROADS labeled "high". Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
+* Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of $CO_2$, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
 **Population of 9.1 billion in 2100 → 0.1&deg;C temperature reduction**
 
@@ -49,7 +49,7 @@ My main takeaways from the simulation:
 
 **Growth of 0.5% GDP/year → 0.1&deg;C temperature reduction**
 
-* Given the emphasis on moving to a [circular economy](https://en.wikipedia.org/wiki/Circular_economy) and away from a [growth mindset](https://en.wikipedia.org/wiki/Doughnut_(economic_model), I figured limiting our economic growth would result in a sizable reduction in warming.  Wrong.  Granted, the model allows 75 years to achieve this lower GDP growth rate from the current rate of 2.5% GDP growth but a sacrifice of 1% GDP growth in exchange for just 0.1&deg;C in temperature reduction seems like a waste of political capital.
+* Given the emphasis on moving to a [circular economy](https://en.wikipedia.org/wiki/Circular_economy) and away from a [growth mindset](https://en.wikipedia.org/wiki/Doughnut_(economic_model)), I figured limiting our economic growth would result in a sizable reduction in warming.  Wrong.  Granted, the model allows 75 years to achieve this lower GDP growth rate from the current rate of 2.5% GDP growth but a sacrifice of 1% GDP growth in exchange for just 0.1&deg;C in temperature reduction seems like a waste of political capital.
 
 **Methane reduction of 75% → 0.3&deg;C temperature reduction**
 
