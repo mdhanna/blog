@@ -13,11 +13,11 @@
 <link rel="canonical" href="https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html" />
 <meta property="og:url" content="https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html" />
 <meta property="og:site_name" content="Mel Hanna" />
-<meta property="og:image" content="https://mdhanna.github.io/blog/images/enroads/Capture.png" />
+<meta property="og:image" content="https://mdhanna.github.io/blog/images/enroads/Capture.PNG" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-05-31T18:47:51-05:00" />
 <script type="application/ld+json">
-{"url":"https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html","@type":"BlogPosting","headline":"How intuitive data viz can tackle climate change","dateModified":"2021-05-31T18:47:51-05:00","datePublished":"2021-05-31T18:47:51-05:00","image":"https://mdhanna.github.io/blog/images/enroads/Capture.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html"},"description":"User-friendly data visualizations can help us get a grip on global warming.","@context":"https://schema.org"}</script>
+{"url":"https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html","@type":"BlogPosting","headline":"How intuitive data viz can tackle climate change","dateModified":"2021-05-31T18:47:51-05:00","datePublished":"2021-05-31T18:47:51-05:00","image":"https://mdhanna.github.io/blog/images/enroads/Capture.PNG","mainEntityOfPage":{"@type":"WebPage","@id":"https://mdhanna.github.io/blog/data%20visualization/2021/05/31/enroads-simulator.html"},"description":"User-friendly data visualizations can help us get a grip on global warming.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://mdhanna.github.io/blog/feed.xml" title="Mel Hanna" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -124,19 +124,19 @@ window.onload = wrap_img;
 
 <p>This is where an intuitive climate simulator called <a href="https://www.climateinteractive.org/tools/en-roads/">En-ROADS</a> comes into play. Created by Climate Interactive and MIT Sloan’s Sustainability Initiative, this tool allows a user to effectively create their own policy solution to climate change.</p>
 
-<p><em>Solve global warming with the click of a button!</em></p>
+<h2 id="where-are-these-numbers-coming-from">Where are these numbers coming from?</h2>
 
 <p>Of course, it’s not that simple. Under the hood, the simulator is running nearly 14,000 equations over 110 years from 1990 to 2100 in just 60 milliseconds.  These equations rely on factors such as delay times, progress ratios, price sensitivities, historic growth of energy sources, and energy efficiency potential culled from the literature.</p>
 
 <p>If you’re interested in more of the science and math behind the simulation, the En-ROADS team has documented all their assumptions, parameters, and equations in a <a href="https://img.climateinteractive.org/wp-content/uploads/2021/03/En-ROADS_Reference_Guide_030321.pdf">reference guide</a> that runs nearly 400 pages long.  Climate Interactive’s <a href="https://docs.climateinteractive.org/projects/en-roads/en/latest/index.html">docs</a> also offers a much more digestible read that also includes a “Big Message” takeaway for each of the levers.</p>
 
-<p>But if instead you want to jump right in and click some buttons, let’s start building our new climate-friendly world.</p>
+<h2 id="lets-start-building-our-new-climate-friendly-world">Let’s start building our new climate-friendly world.</h2>
 
 <p>The interface looks like the screenshot below, which shows the starting scenario.  This is “business-as-usual”, leading us to an increase of 3.6°C by the year 2100.  We see from the colorful plot on the left that the model already predicts a rise in renewable energy by that time—however it looks like the additional renewables goes directly to powering a more energy-intensive society as the exojoules expected from other energy sources are roughly constant.</p>
 
 <p><img src="/blog/images/enroads/base.png" alt="" /></p>
 
-<p>Let’s try to avert this disaster.  Coal seems like an easy place to start.  We’ll tax it to the max (\$110 per ton).</p>
+<p>Let’s try to avert this disaster.  Coal seems like an easy place to start.  We’ll tax it to the max ($110 per ton).</p>
 
 <p><img src="/blog/images/enroads/coal.png" alt="" /></p>
 
@@ -146,10 +146,10 @@ window.onload = wrap_img;
 
 <p>My main takeaways from the simulation:</p>
 
-<p><strong>Carbon price of \$70 per ton → 0.5°C temperature reduction</strong></p>
+<p><strong>Carbon price of $70 per ton → 0.5°C temperature reduction</strong></p>
 
 <ul>
-  <li>Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of $CO_2$, which I used as a quick benchmark to set a carbon price that didn’t send me into sticker shock.  I considered an additional charge of \$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled “high”. Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.</li>
+  <li>Implementing a carbon price resulted in the biggest bang for our buck.  The carbon impact of an economy flight from NYC to LA is a half ton of $CO_2$, which I used as a quick benchmark to set a carbon price that didn’t send me into sticker shock.  I considered an additional charge of $35 for that flight to be a fee I could swallow and so set my carbon price at $70, a choice En-ROADS labeled “high”. Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.</li>
 </ul>
 
 <p><strong>Population of 9.1 billion in 2100 → 0.1°C temperature reduction</strong></p>
@@ -161,7 +161,7 @@ window.onload = wrap_img;
 <p><strong>Growth of 0.5% GDP/year → 0.1°C temperature reduction</strong></p>
 
 <ul>
-  <li>Given the emphasis on moving to a <a href="https://en.wikipedia.org/wiki/Circular_economy">circular economy</a> and away from a [growth mindset](https://en.wikipedia.org/wiki/Doughnut_(economic_model), I figured limiting our economic growth would result in a sizable reduction in warming.  Wrong.  Granted, the model allows 75 years to achieve this lower GDP growth rate from the current rate of 2.5% GDP growth but a sacrifice of 1% GDP growth in exchange for just 0.1°C in temperature reduction seems like a waste of political capital.</li>
+  <li>Given the emphasis on moving to a <a href="https://en.wikipedia.org/wiki/Circular_economy">circular economy</a> and away from a <a href="https://en.wikipedia.org/wiki/Doughnut_(economic_model)">growth mindset</a>, I figured limiting our economic growth would result in a sizable reduction in warming.  Wrong.  Granted, the model allows 75 years to achieve this lower GDP growth rate from the current rate of 2.5% GDP growth but a sacrifice of 1% GDP growth in exchange for just 0.1°C in temperature reduction seems like a waste of political capital.</li>
 </ul>
 
 <p><strong>Methane reduction of 75% → 0.3°C temperature reduction</strong></p>
