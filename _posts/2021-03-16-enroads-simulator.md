@@ -44,17 +44,17 @@ My main takeaways from the simulation:
 
 Implementing a carbon price resulted in the biggest bang for our buck.  
 
-The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \$\35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". 
+The carbon impact of an economy flight from NYC to LA is a half ton of CO<sub>2</sub>, which I used as a quick benchmark to set a carbon price that didn't send me into sticker shock.  I considered an additional charge of \\$35 for that flight to be a fee I could swallow and so set my carbon price at \$70, a choice En-ROADS labeled "high". 
 
 Note that the simulator also allows you to choose the timeline for this carbon tax to phase in.  The default was 10 years to reach the final price, which I did not change.
 
-**Population of 9.1 billion in 2100 → 0.1&deg;C temperature reduction**
+#### **Population of 9.1 billion in 2100 → 0.1&deg;C temperature reduction**
 
 I set population all the way to the left, which corresponds to the lower bound on the 95% probability range from the UN.  Considering that [not having children is the most environmental choice you can make](https://today.oregonstate.edu/archives/2009/jul/family-planning-major-environmental-emphasis), I expected a bigger boost from fewer people on the planet.  
 
 I suspect the reason behind such a small decrease in warming is that UN model assumes that depressed population growth would come from women's empowerment campaigns in developing countries, which do not account for the lion's share of emissions.
 
-**Growth of 0.5% GDP/year → 0.1&deg;C temperature reduction**
+#### **Growth of 0.5% GDP/year → 0.1&deg;C temperature reduction**
 
 Given the emphasis on moving to a [circular economy](https://en.wikipedia.org/wiki/Circular_economy) and away from a [growth mindset](https://en.wikipedia.org/wiki/Doughnut_(economic_model)), I figured limiting our economic growth would result in a sizable reduction in warming.  
 
@@ -62,7 +62,7 @@ Wrong.
 
 Granted, the model allows 75 years to achieve this lower GDP growth rate from the current rate of 2.5% GDP growth but a sacrifice of 1% GDP growth in exchange for just 0.1&deg;C in temperature reduction seems like a waste of political capital.
 
-**Methane reduction of 75% → 0.3&deg;C temperature reduction**
+#### **Methane reduction of 75% → 0.3&deg;C temperature reduction**
 
 Methane is low-hanging fruit.  While the simulator allows us to also limit emissions from certain industries as shown below (agriculture, mining, etc.), I set my reduction as 75% across the board.  This would require a more plant-based diet for all, as well as increased accountability within heavy industry to reduce methane emissions. 
 
