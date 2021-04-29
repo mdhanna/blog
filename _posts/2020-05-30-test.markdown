@@ -9,4 +9,4 @@ categories:
 - Data Science Basics
 ---
 Testing
-{% include Images/value_hist.html %}
+{% include {{site.baseurl}}/_posts/Images/value_hist.html %}
